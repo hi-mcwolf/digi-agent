@@ -1,0 +1,1696 @@
+
+<!-- saved from url=(0076)https://bingoplus-agent-mobile.xiongmiao679.chatgpt.site/agent-center-mobile -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>BingoPlus Agent Center · PC</title>
+<style>
+  :root{
+    --page-pad:32px; --content-max:1120px;
+    --ink:#f6f7f9; --muted:#8c94a3; --dim:#616874; --faint:#4a5060;
+    --line:#242933; --line-2:#2f3542; --line-3:#3a4152;
+    --panel:#171b23; --panel-2:#1e232d; --panel-3:#242a35; --panel-hi:#2a303c;
+    --base:#0d0f14; --base-2:#0a0c11; --base-deep:#08090d;
+    --orange:#ff6038; --orange-2:#ff9b4d; --orange-dim:#7a2f18;
+    --gold:#f1c45a; --gold-dim:#5b4820;
+    --green:#34d78b; --green-dim:#0e3d2a;
+    --red:#ff4c5e; --red-dim:#3f1521;
+    --blue:#6a89ff; --blue-2:#a4c3ff; --blue-dim:#1a2545;
+    --purple:#a67dff; --purple-dim:#2c1e4a;
+    --ice:#b9d7ee;
+    --shadow: 0 12px 32px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{background:var(--base-deep);color-scheme:dark}
+  body{
+    margin:0;background:var(--base-deep);color:var(--ink);
+    font-family:Inter,"SF Pro Text",-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI",sans-serif;
+    font-feature-settings:"tnum" 1,"ss01" 1;
+    letter-spacing:0;
+    min-height:100vh;
+  }
+  button,input,textarea{font:inherit;color:inherit;letter-spacing:0}
+  button{border:0;background:transparent;cursor:pointer}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* ==== Page shell (PC) ==== */
+  body{
+    background:#08090d;
+    background-image:radial-gradient(circle at 18% 8%, rgba(255,96,56,.07), transparent 46%),radial-gradient(circle at 82% 92%, rgba(106,137,255,.06), transparent 48%);
+  }
+  .page{
+    width:100%;
+    min-height:100vh;
+    margin:0 auto;
+    background:rgba(8,11,16,.72);
+    position:relative;
+    isolation:isolate;
+    padding-bottom:64px;
+    overflow-x:hidden;
+  }
+  .page::before{
+    content:"";position:fixed;z-index:0;inset:0;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(7,10,15,.28) 0%,rgba(7,10,15,.72) 42%,rgba(7,10,15,.9) 100%),
+      url("public/agent-city-banner.png") center top/cover no-repeat;
+    filter:saturate(.88) contrast(1.06);
+  }
+  .page::after{
+    content:"";position:fixed;z-index:0;inset:0;pointer-events:none;opacity:.18;
+    background-image:linear-gradient(rgba(116,145,182,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(116,145,182,.12) 1px,transparent 1px);
+    background-size:36px 36px;
+    mask-image:linear-gradient(180deg,#000 0%,transparent 70%);
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 70%);
+  }
+  .page>*{position:relative;z-index:1}
+  .page-inner{width:min(100%,var(--content-max));margin:0 auto}
+  .page-inner > .hero,
+  .page-inner > .metric-grid,
+  .page-inner > .main-grid,
+  .page-inner > .content-section{box-sizing:border-box}
+  .page-inner > .main-grid{padding-left:var(--page-pad);padding-right:var(--page-pad)}
+
+  /* ==== Topbar ==== */
+  .topbar{
+    height:72px;padding:0;
+    position:sticky;top:0;z-index:20;
+    background:rgba(13,15,20,.94);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  }
+  .topbar-inner{
+    width:min(100%,var(--content-max));margin:0 auto;padding:0 var(--page-pad);height:100%;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{display:flex;flex-direction:column;gap:0;line-height:1;flex-shrink:0}
+  .brand strong{font-size:22px;font-style:italic;font-weight:900;color:var(--orange);letter-spacing:-.5px}
+  .brand strong i{color:var(--orange-2);font-style:italic}
+  .brand small{font-size:8px;letter-spacing:2.8px;margin-top:5px;color:#8b93a1;font-weight:700}
+  .pc-nav{display:none;align-items:center;gap:4px;flex:1;justify-content:center}
+  .pc-nav button{
+    min-height:40px;padding:0 16px;border-radius:8px;color:#9aa3b2;
+    font-size:13px;font-weight:700;letter-spacing:.2px;transition:color .15s,background .15s;
+  }
+  .pc-nav button:hover{color:#fff;background:rgba(255,255,255,.05)}
+  .pc-nav button.active{color:var(--orange);background:rgba(255,96,56,.1)}
+  @media (max-width:900px){.pc-nav{display:none}}
+  .top-actions{display:flex;gap:10px;flex-shrink:0}
+  .top-actions button{min-height:40px;padding:0 18px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.3px;transition:transform .15s,background .15s,border-color .15s}
+  .top-actions button:active{transform:scale(.97)}
+  .top-actions button:hover{filter:brightness(1.06)}
+  .contact-btn{background:transparent;border:1px solid #47505e;color:#e0e4ec}
+  .contact-btn:hover{border-color:#6a7384;background:rgba(255,255,255,.04)}
+  .login-btn{background:var(--orange);color:#fff;box-shadow:0 6px 20px rgba(255,96,56,.35);border:0}
+
+  /* ==== Live strip (marquee) ==== */
+  .live-strip{
+    height:42px;padding:0;
+    background:var(--panel);color:#c8ccd6;
+    font-size:12px;border-bottom:1px solid var(--line);
+    overflow:hidden;position:relative;
+  }
+  .live-strip-inner{
+    width:min(100%,var(--content-max));margin:0 auto;padding:0 var(--page-pad);height:100%;
+    display:flex;gap:12px;align-items:center;
+  }
+  .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);flex:0 0 auto;animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.2)}}
+  .marquee-track{
+    display:flex;gap:24px;flex:1;overflow:hidden;
+    mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+  }
+  .marquee-inner{display:flex;gap:24px;animation:scroll 24s linear infinite;flex-shrink:0}
+  .marquee-item{display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+  .marquee-item b{color:var(--gold);font-weight:700}
+  .marquee-item i{width:1px;height:12px;background:var(--line-3);font-style:normal}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* ==== Hero ==== */
+  .hero{
+    margin:24px var(--page-pad) 28px;
+    padding:36px 40px;
+    border-radius:16px;
+    border:1px solid var(--line-2);
+    background:
+      linear-gradient(90deg,rgba(7,11,17,.94) 0%,rgba(7,11,17,.72) 48%,rgba(7,11,17,.28) 100%),
+      linear-gradient(180deg,transparent 45%,rgba(7,10,15,.58) 100%),
+      url("public/agent-city-banner.png") 62% center/cover no-repeat;
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:32px;
+    min-height:220px;
+  }
+  .hero::before{
+    content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;
+    background:
+      radial-gradient(circle, transparent 60px, rgba(255,96,56,.06) 61px 62px, transparent 63px),
+      radial-gradient(circle, transparent 80px, rgba(255,96,56,.08) 81px 82px, transparent 83px),
+      radial-gradient(circle, transparent 100px, rgba(255,96,56,.1) 101px 102px, transparent 103px);
+    animation:hero-spin 40s linear infinite;
+  }
+  @keyframes hero-spin{to{transform:rotate(360deg)}}
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      linear-gradient(180deg, transparent 50%, rgba(0,0,0,.35) 100%);
+  }
+  .hero-copy{position:relative;z-index:2}
+  .eyebrow,.section-kicker{color:var(--orange);font-size:11px;font-weight:900;letter-spacing:1.8px}
+  .hero-copy h1{margin:0 0 12px;font-size:40px;line-height:1.1;letter-spacing:-.6px;max-width:520px;font-weight:800}
+  .hero-copy p{color:#b5bbc5;max-width:460px;font-size:15px;line-height:1.55;margin:0}
+  .hero-bottom{position:relative;z-index:2;display:flex;justify-content:flex-end;align-items:flex-end;flex-shrink:0}
+  .hero-status{color:#b9c0ca;font-size:12px;display:flex;align-items:center;gap:7px}
+  .hero-status span{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+  .hero-cta{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+    color:#fff;padding:14px 22px;border-radius:8px;font-size:14px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;transition:all .15s;
+  }
+  .hero-cta:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28)}
+  .hero-cta:active{transform:scale(.97);background:rgba(255,255,255,.12)}
+
+  /* ==== Section common ==== */
+  .content-section{padding:0 var(--page-pad);margin-bottom:40px;scroll-margin-top:88px}
+  .section-heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+  .section-heading > div{min-width:0}
+  .section-heading h2{margin:4px 0 0;font-size:24px;line-height:1.2;letter-spacing:-.3px}
+  .section-heading > button{color:#aeb4be;padding:8px 0 3px 8px;font-size:12px;font-weight:600}
+  .section-heading > button:hover{color:#fff}
+  .data-note,.update-badge{color:#8f96a1;background:var(--panel);border:1px solid var(--line-2);font-size:10px;padding:6px 10px;border-radius:4px;font-weight:700;letter-spacing:.4px}
+  .update-badge{color:var(--green);border-color:var(--green-dim);background:rgba(52,215,139,.06)}
+  .main-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;padding:0 var(--page-pad);margin-bottom:40px;align-items:start}
+  .main-grid > .content-section{padding:0;margin-bottom:0}
+  .side-stack{display:grid;gap:28px}
+  .side-stack .content-section{padding:0;margin-bottom:0}
+  .side-stack .campaign-carousel{grid-template-columns:1fr}
+  .side-stack .campaign-card{height:118px}
+  @media (max-width:960px){.main-grid{grid-template-columns:1fr}}
+
+  /* ==== Member offers grid ==== */
+  .offers-carousel{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+    padding:0;margin:0;
+  }
+  .offer-card{
+    border:1px solid var(--line-2);
+    border-radius:10px;padding:0;background:var(--panel);
+    display:flex;flex-direction:column;overflow:hidden;
+    text-align:left;transition:border-color .15s,transform .15s,box-shadow .15s;
+  }
+  .offer-card:hover{border-color:var(--line-3);transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.28)}
+  .offer-img{
+    width:100%;aspect-ratio:16/9;object-fit:cover;display:block;
+    border-bottom:1px solid var(--line-2);
+  }
+  .offer-body{min-width:0;padding:16px 18px 18px}
+  .offer-body strong{font-size:15px;display:block;line-height:1.3}
+  .offer-body p{color:#969eaa;font-size:12px;line-height:1.5;margin:8px 0 14px}
+  .offer-share{
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--orange);font-size:12px;font-weight:700;
+    padding:8px 12px;background:rgba(255,96,56,.1);border-radius:5px;border:1px solid rgba(255,96,56,.2);
+    transition:transform .15s,background .15s;
+  }
+  .offer-share:hover{background:rgba(255,96,56,.16)}
+  .offer-share:active{transform:scale(.97)}
+  @media (max-width:900px){.offers-carousel{grid-template-columns:1fr}}
+
+  /* ==== Agent campaigns grid ==== */
+  .campaign-carousel{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    padding:0;margin:0;
+  }
+  .campaign-card{
+    height:140px;border-radius:10px;padding:18px 20px;text-align:left;
+    border:1px solid;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .15s,box-shadow .15s;
+  }
+  .campaign-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.3)}
+  .campaign-card:active{transform:scale(.98)}
+  @media (max-width:900px){.campaign-carousel{grid-template-columns:1fr}}
+  .campaign-card.blue{background:linear-gradient(155deg,#1d2945 0%,#151d33 100%);border-color:#344058}
+  .campaign-card.orange{background:linear-gradient(155deg,#3b211a 0%,#2a1710 100%);border-color:#5d3427}
+  .campaign-card.green{background:linear-gradient(155deg,#172c27 0%,#0f1e1a 100%);border-color:#285047}
+  .cc-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .cc-tag{
+    font-size:10px;font-weight:900;padding:5px 9px;
+    color:var(--gold);background:rgba(241,196,90,.12);border-radius:3px;letter-spacing:.4px;
+  }
+  .cc-timer{font-size:12px;color:#969ea9;display:flex;align-items:center;gap:4px}
+  .cc-timer::before{content:"⏱";font-size:12px}
+  .cc-body h3{font-size:20px;margin:0;font-weight:700;line-height:1.22}
+
+  /* ==== KPI grid with sparklines ==== */
+  .metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 var(--page-pad);margin-bottom:36px}
+  .metric-card{
+    min-width:0;min-height:110px;background:var(--panel);border:1px solid var(--line-2);
+    border-radius:10px;padding:18px 20px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:border-color .15s,transform .15s;
+  }
+  .metric-card:hover{border-color:var(--line-3);transform:translateY(-1px)}
+  .metric-card .m-lbl{font-size:11px;color:#8f96a2;font-weight:800;letter-spacing:.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .metric-card .m-val{font-size:28px;margin:8px 0 6px;font-weight:800;line-height:1;letter-spacing:-.4px}
+  .metric-card .m-delta{font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;line-height:1}
+  .metric-card .m-delta.up{color:var(--green)}
+  .metric-card .m-delta.dn{color:var(--red)}
+  .metric-card .m-delta.neutral{color:var(--muted)}
+  .metric-card .spark{margin-top:6px;height:18px;width:100%}
+  .metric-card.hi .m-val{color:var(--green)}
+
+  /* ==== Commission tiers ==== */
+  .commission-section{padding-top:6px}
+  .ranking-section{padding-top:20px;border-top:1px solid var(--line)}
+  .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tier{
+    height:140px;padding:16px;border:1px solid var(--line-2);
+    background:var(--panel);border-left:3px solid #a9b0bc;border-radius:8px;
+    display:flex;flex-direction:column;justify-content:space-between;position:relative;
+    cursor:pointer;transition:all .18s;text-align:left;
+  }
+  .tier:hover{border-color:var(--line-3);transform:translateY(-2px)}
+  .tier:active{transform:scale(.98)}
+  @media (max-width:900px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
+  .tier.selected{
+    background:linear-gradient(135deg,rgba(255,96,56,.12),rgba(255,96,56,.02) 60%),var(--panel);
+    border-color:var(--orange);
+    box-shadow:0 0 0 1px var(--orange),0 8px 22px rgba(255,96,56,.16);
+  }
+  .tier.selected .t-name{color:var(--orange-2)}
+  .tier .t-check{
+    position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;
+    background:var(--orange);color:#fff;display:none;place-items:center;
+    font-size:11px;font-weight:900;
+    box-shadow:0 3px 8px rgba(255,96,56,.4);
+  }
+  .tier.selected .t-check{display:grid}
+  .tier .t-hd{display:flex;justify-content:space-between;align-items:center}
+  .tier .t-name{font-size:11px;color:#aeb5c0;font-weight:900;letter-spacing:.6px}
+  .tier .t-badge{
+    width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+    font-size:10px;color:#0d0f14;font-weight:900;
+    background:linear-gradient(135deg,#d5dbe6,#8a94a8);border:1px solid rgba(255,255,255,.2);
+  }
+  .tier .t-rate{font-size:32px;font-weight:900;line-height:1;letter-spacing:-.5px;margin:2px 0}
+  .tier .t-th{font-size:11px;color:#8890a0;line-height:1.35}
+  .tier .t-th b{color:#c8cdd6;font-weight:700}
+  .tier.silver{border-left-color:#a9b0bc}
+  .tier.gold{border-left-color:var(--gold)}
+  .tier.gold .t-badge{background:linear-gradient(135deg,#ffdc75,#c99416)}
+  .tier.ice{border-left-color:var(--ice)}
+  .tier.ice .t-badge{background:linear-gradient(135deg,#e0f0ff,#7bb6dd)}
+  .tier.orange{border-left-color:var(--orange);background:linear-gradient(135deg,rgba(255,96,56,.05),transparent 60%),var(--panel)}
+  .tier.orange .t-badge{background:linear-gradient(135deg,#ff9b6a,#c73f14);color:#fff}
+  .tier.orange .t-name{color:var(--orange-2)}
+
+  .qualification-panel{margin-top:12px;padding:0 14px 14px;border:1px solid #3c4556;border-radius:8px;background:#191f29;overflow:hidden;position:relative}
+  .qualification-panel::before{content:"";display:block;height:3px;margin:0 -14px 13px;background:#b5bdc9}
+  .qualification-panel[data-tier=advance]::before{background:var(--gold)}
+  .qualification-panel[data-tier=platinum]::before{background:var(--ice)}
+  .qualification-panel[data-tier=prestige]::before{background:var(--orange)}
+  .qualification-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .qualification-head>div{min-width:0}.qualification-head>div>span{color:#aeb6c2;font-size:8px;font-weight:900;letter-spacing:.8px}
+  .qualification-head h3{margin:4px 0 0;font-size:14px;line-height:1.25}
+  .qualification-rate{min-width:58px;padding:7px 8px;border:1px solid #36404e;border-radius:6px;background:#11161e;text-align:center;display:grid}
+  .qualification-rate b{font-size:18px;line-height:1;color:var(--gold)}.qualification-rate small{margin-top:3px;color:#737d8a;font-size:6px;font-weight:800}
+  .qualification-profile{margin:10px 0 12px;color:#8d97a5;font-size:9px;line-height:1.5}
+  .qualification-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .qualification-metrics>div{min-height:56px;padding:9px;display:flex;align-items:center;gap:8px;border:1px solid #303947;border-radius:6px;background:#141a22}
+  .qualification-metrics>div:only-child{grid-column:1/-1}
+  .qualification-icon{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:rgba(106,137,255,.12);color:#87a2ff;font-size:8px;flex:0 0 auto}
+  .qualification-metrics p{margin:0;display:grid;gap:3px}.qualification-metrics strong{font-size:17px;line-height:1}.qualification-metrics small{color:#858f9c;font-size:7px}
+  .benefit-head{margin:13px 0 7px;padding-bottom:7px;border-bottom:1px solid #2d3541;display:flex;justify-content:space-between;color:#9da6b3;font-size:7px;font-weight:900;letter-spacing:.6px}.benefit-head small{color:#697381;font-size:7px;letter-spacing:0}
+  .benefit-list{margin:0;padding:0;list-style:none;display:grid;gap:6px}.benefit-list li{position:relative;padding-left:13px;color:#aeb6c2;font-size:8px;line-height:1.45}.benefit-list li::before{content:"";position:absolute;left:1px;top:5px;width:4px;height:4px;border-radius:50%;background:var(--orange)}
+
+  .earning-example{
+    margin-top:12px;padding:14px;border:1px solid #50472a;background:linear-gradient(135deg,#2b2820 0%,#1e1c17 100%);
+    border-radius:8px;position:relative;
+  }
+  .example-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .example-title > div{display:grid;gap:3px;flex:1}
+  .example-title strong{font-size:12px}
+  .example-title small{font-size:8.5px;color:#8d918f}
+  .coin{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ffdc75,#c99416);color:#3a2c07;font-weight:900;font-size:14px;flex-shrink:0}
+  .earning-example dl{margin:0}
+  .earning-example dl div{display:flex;justify-content:space-between;padding:5px 0;font-size:10px;color:#aeb3b6}
+  .earning-example dt,.earning-example dd{margin:0}
+  .earning-example .total{border-top:1px solid #4a4534;margin-top:4px;padding-top:10px}
+  .earning-example .total dt{color:#c8cdd6;font-weight:700}
+  .earning-example .total dd{color:var(--gold);font-size:16px;font-weight:900}
+  .example-note,.privacy-note{color:#696f78;font-size:7.5px;line-height:1.6;margin:8px 0 0;font-style:italic}
+
+  .upsell{
+    margin-top:8px;padding:10px 12px;background:linear-gradient(135deg,rgba(255,96,56,.08),transparent 60%);
+    border:1px dashed rgba(255,96,56,.3);border-radius:6px;
+    display:flex;justify-content:space-between;align-items:center;font-size:9.5px;color:#d0d4dc;
+  }
+  .upsell b{color:var(--orange)}
+  .upsell button{color:var(--orange);font-size:9.5px;font-weight:700;display:inline-flex;align-items:center;gap:3px}
+
+  /* ==== Leaderboard ==== */
+  .rank-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line-2);margin-bottom:14px}
+  .rank-tabs button{border-bottom:2px solid transparent;padding:9px 4px;color:#747c88;font-size:10px;font-weight:800;letter-spacing:.3px;transition:color .15s}
+  .rank-tabs button.selected{color:var(--ink);border-color:var(--orange)}
+
+  .podium{
+    height:200px;display:grid;grid-template-columns:repeat(3,1fr);align-items:end;
+    padding:16px 10px 0;border-bottom:1px solid var(--line);position:relative;
+  }
+  .podium::before{
+    content:"";position:absolute;top:-2px;left:50%;transform:translateX(-50%);
+    width:24px;height:24px;background:radial-gradient(circle,var(--gold),transparent 70%);
+    filter:blur(4px);
+  }
+  .podium-item{text-align:center;position:relative;display:flex;flex-direction:column;align-items:center}
+  .podium-item .avatar{
+    width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(135deg,#b9c3d3,#7d8798);color:#252a32;
+    font-size:12px;font-weight:900;border:2px solid #d5dce6;
+    box-shadow:0 4px 10px rgba(0,0,0,.4);
+  }
+  .podium-item .p-name{font-size:10px;margin-top:8px;font-weight:600;color:#e0e4ec}
+  .podium-item .p-val{color:var(--gold);font-size:9px;margin-top:3px;font-weight:700}
+  .podium-item .p-delta{font-size:8px;font-weight:700;margin-top:2px}
+  .podium-item .p-delta.up{color:var(--green)}
+  .podium-item .p-delta.dn{color:var(--red)}
+  .podium-item .p-delta.neutral{color:var(--muted)}
+  .podium-item .bar{
+    width:80%;margin-top:8px;color:#30353f;
+    display:grid;place-items:center;font-style:normal;font-size:17px;font-weight:900;
+    border-radius:6px 6px 0 0;
+  }
+  .podium-item.place-1{order:2}
+  .podium-item.place-2{order:1}
+  .podium-item.place-3{order:3}
+  .podium-item.place-1 .avatar{width:60px;height:60px;background:linear-gradient(135deg,#ffe287,#c99416);border-color:#ffe18a;box-shadow:0 6px 16px rgba(241,196,90,.4)}
+  .podium-item.place-1 .bar{height:70px;background:linear-gradient(180deg,var(--gold) 0%,#a67c14 100%);color:#3a2c07}
+  .podium-item.place-1 .p-crown{position:absolute;top:-16px;font-size:16px}
+  .podium-item.place-2 .bar{height:48px;background:linear-gradient(180deg,#c7ceda,#7c8497)}
+  .podium-item.place-3 .avatar{background:linear-gradient(135deg,#e6a06b,#a05e2c);border-color:#e3a47d;color:#fff}
+  .podium-item.place-3 .bar{height:32px;background:linear-gradient(180deg,#c97d52,#8a4e28);color:#fff}
+
+  .your-rank{
+    margin:14px 0 10px;padding:11px 13px;background:linear-gradient(135deg,rgba(255,96,56,.08),transparent 70%);
+    border:1px solid rgba(255,96,56,.2);border-radius:6px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .your-rank-l{display:flex;align-items:center;gap:10px}
+  .your-rank-l .yr-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--orange),#c73f14);display:grid;place-items:center;color:#fff;font-size:10px;font-weight:900}
+  .your-rank-l div{display:grid;gap:2px}
+  .your-rank-l strong{font-size:10px;font-weight:700}
+  .your-rank-l small{color:#8f96a2;font-size:8.5px}
+  .your-rank-r{text-align:right}
+  .your-rank-r strong{font-size:16px;font-weight:900;color:var(--orange);letter-spacing:-.3px}
+  .your-rank-r small{font-size:8px;color:#8f96a2;display:block;margin-top:1px}
+
+  .rank-list > div{
+    min-height:52px;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:20px 32px 1fr auto;align-items:center;gap:9px;font-size:10px;padding:6px 0;
+  }
+  .rank-list > div:last-child{border-bottom:0}
+  .rank-list > div > b{color:#747c87;text-align:center;font-weight:700;font-size:11px}
+  .mini-avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#263553;color:#a9bcde;font-size:9px;font-weight:700}
+  .rank-list .r-nm{font-weight:600;color:#e0e4ec}
+  .rank-list em{font-size:7.5px;font-style:normal;color:var(--gold);background:rgba(241,196,90,.12);padding:3px 6px;border-radius:3px;font-weight:800;letter-spacing:.3px}
+  .rank-list em.badge-plat{color:var(--ice);background:rgba(185,215,238,.1)}
+  .rank-list em.badge-adv{color:var(--gold);background:rgba(241,196,90,.1)}
+  .rank-list em.badge-gen{color:var(--muted);background:rgba(140,148,163,.1)}
+  .rank-list em.badge-prest{color:var(--orange-2);background:rgba(255,155,77,.1)}
+  .rank-list .r-vl{color:var(--green);font-weight:900;text-align:right;font-size:11px}
+  .rank-list .r-mv{font-size:8px;font-weight:700;text-align:right;line-height:1}
+  .rank-list .r-mv.up{color:var(--green)}
+  .rank-list .r-mv.dn{color:var(--red)}
+  .rank-list .r-mv.neutral{color:var(--muted)}
+  .rank-list-head{height:30px;padding:0 2px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);color:#6f7886;font-size:7.5px;font-weight:800;letter-spacing:.7px}
+  .rank-list-head span+span{font-weight:600;letter-spacing:0;color:#59616e}
+  .rank-list{height:364px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#3a424f transparent}
+  .rank-list::-webkit-scrollbar{width:3px}.rank-list::-webkit-scrollbar-track{background:transparent}.rank-list::-webkit-scrollbar-thumb{background:#3a424f;border-radius:2px}
+  .rank-list > div{height:52px;background:var(--base)}
+  .rank-list > div:nth-child(7){border-bottom-color:#3b424e}
+
+  /* ==== Recruit CTA ==== */
+  .recruit-cta{
+    margin:0 var(--page-pad) 26px;padding:20px var(--page-pad);
+    background:
+      radial-gradient(ellipse at 100% 50%, rgba(255,96,56,.2), transparent 60%),
+      linear-gradient(135deg,#1c1c26 0%,#0f1017 100%);
+    border:1px solid var(--line-2);border-radius:10px;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    position:relative;overflow:hidden;
+  }
+  .recruit-cta::before{
+    content:"";position:absolute;right:-30px;top:50%;transform:translateY(-50%);
+    width:120px;height:120px;background:radial-gradient(circle,rgba(255,96,56,.15),transparent 70%);
+    filter:blur(20px);
+  }
+  .recruit-cta-txt{flex:1;min-width:0;position:relative;z-index:1}
+  .recruit-cta-txt strong{font-size:15px;font-weight:800;letter-spacing:-.2px;display:block;margin-bottom:4px}
+  .recruit-cta-txt p{font-size:9.5px;color:#969ea9;margin:0;line-height:1.45}
+  .recruit-cta-btn{
+    background:var(--orange);color:#fff;border:0;padding:10px 16px;border-radius:6px;
+    font-size:11px;font-weight:800;letter-spacing:.4px;flex-shrink:0;
+    box-shadow:0 6px 18px rgba(255,96,56,.35);position:relative;z-index:1;
+  }
+  /* Recruit CTA docked to the bottom of the first screen */
+  .recruit-dock{display:none}
+
+  /* ==== Data compliance ribbon ==== */
+  .compliance-ribbon{
+    margin:0 var(--page-pad) 26px;padding:10px 12px;
+    background:rgba(241,196,90,.06);border:1px solid rgba(241,196,90,.2);
+    border-radius:6px;font-size:9.5px;color:#c8b874;
+    display:flex;align-items:flex-start;gap:8px;line-height:1.5;
+  }
+  .compliance-ribbon::before{content:"ⓘ";font-size:12px;flex-shrink:0;line-height:1.3}
+
+  /* ==== Bottom nav removed on PC — nav lives in topbar ==== */
+
+  /* ==== Overlays ==== */
+  .overlay{
+    position:fixed;z-index:50;inset:0;background:rgba(0,0,0,.75);
+    display:flex;justify-content:center;align-items:center;
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    animation:fade .2s ease-out;padding:24px;
+  }
+  [hidden]{display:none!important}
+  .sheet-panel,.full-page-panel{width:min(100%,560px);background:#11151c;border:1px solid var(--line-2);color:var(--ink)}
+  .sheet-panel{max-height:88vh;overflow-y:auto;padding:16px 28px 28px;border-radius:14px;animation:rise .28s ease-out}
+  .full-page-panel{border-radius:16px;max-height:88vh;min-height:auto;overflow-y:auto}
+  .sheet-handle{width:36px;height:3px;border-radius:3px;background:#454b56;margin:4px auto 16px}
+  .sheet-heading{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:9px}
+  .sheet-heading > div{flex:1;min-width:0}
+  .sheet-heading h2{margin:4px 0 0;font-size:22px;font-weight:800;letter-spacing:-.3px}
+  .sheet-heading > button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);background:#1b2029;font-size:20px;color:#aeb5c0;line-height:1;padding:0;flex-shrink:0}
+  .sheet-intro{color:#929aa7;font-size:10.5px;line-height:1.6;margin:0 0 16px}
+
+  /* ==== Simplified Contact panel ==== */
+  .contact-label{display:block;color:#8f96a2;font-size:11px;font-weight:700;letter-spacing:.3px;margin:2px 0 11px}
+  .channel-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+  .channel-btn{
+    height:74px;border-radius:10px;background:#1b2740;border:1px solid #2c3a57;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+    font-size:13px;font-weight:800;letter-spacing:.3px;color:#e6e9f0;
+    transition:transform .15s,background .15s;
+  }
+  .channel-btn:active{transform:scale(.97);background:#20304f}
+  .channel-btn svg{width:27px;height:27px;flex:0 0 auto}
+  .ch-messenger-lg svg{color:#0084ff}
+  .ch-viber-lg svg{color:#8f7bff}
+  .contact-divider{height:1px;background:var(--line-2);margin:0 0 18px}
+  .contact-methods{margin:0 0 12px;padding:0;border:0}
+  .contact-methods legend{margin-bottom:7px;color:#aeb5c0;font-size:9.5px;font-weight:700}
+  .contact-method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+  .contact-method-grid label{
+    height:40px;margin:0;display:flex;align-items:center;justify-content:center;gap:6px;
+    border:1px solid var(--line-3);border-radius:6px;background:#1b212b;
+    font-size:9px;font-weight:700;color:#c8ccd6;cursor:pointer;
+  }
+  .contact-method-grid input{width:14px;height:14px;accent-color:var(--orange);margin:0}
+  .contact-method-grid label:has(input:checked){border-color:rgba(255,96,56,.45);background:rgba(255,96,56,.08);color:#fff}
+  .contact-methods .field-error{margin-top:6px}
+  .apply-head{margin-bottom:14px}
+  .apply-head strong{display:block;font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .apply-head small{display:block;margin-top:5px;color:#8f96a2;font-size:11px;line-height:1.5}
+  .apply-success{text-align:center;padding:18px 6px 8px;animation:fade .22s ease-out}
+  .success-check{
+    width:66px;height:66px;margin:8px auto 18px;border-radius:50%;
+    display:grid;place-items:center;font-size:32px;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,var(--green),#1f9c63);
+    box-shadow:0 12px 28px rgba(52,215,139,.3);animation:rise .3s ease-out;
+  }
+  .apply-success h3{margin:0 0 9px;font-size:19px;font-weight:800;letter-spacing:-.2px}
+  .apply-success p{margin:0 0 22px;color:#9aa2ae;font-size:12.5px;line-height:1.65}
+  .apply-success .primary-action{width:100%}
+
+  /* ==== Contact panel — enhanced ==== */
+  .support-list{display:grid;gap:10px}
+  .support-card{
+    padding:14px;border:1px solid #2c3440;background:linear-gradient(135deg,#1c222d,#171b25);
+    border-radius:10px;text-align:left;
+  }
+  .support-card-hd{
+    display:flex;align-items:center;gap:12px;margin-bottom:12px;
+  }
+  .support-avatar{
+    width:44px;height:44px;display:grid;place-items:center;border-radius:50%;
+    background:linear-gradient(135deg,#263e70,#1a2954);color:#b7c9eb;font-weight:800;font-size:12px;flex-shrink:0;
+  }
+  .support-avatar.alt{background:linear-gradient(135deg,#40305f,#2a1e42);color:#cbb7ea}
+  .support-info{min-width:0;flex:1}
+  .support-info strong{font-size:12.5px;font-weight:700;display:block;line-height:1.3}
+  .support-info small{color:#858e9b;font-size:9px;line-height:1.4;display:block;margin-top:2px}
+  .support-tier-badge{
+    font-size:8px;font-weight:800;padding:2px 6px;border-radius:3px;letter-spacing:.4px;flex-shrink:0;
+    color:var(--gold);background:rgba(241,196,90,.12);border:1px solid rgba(241,196,90,.25);
+  }
+
+  .support-phone{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 12px;background:rgba(0,0,0,.24);border-radius:6px;margin-bottom:10px;
+    border:1px solid var(--line-2);
+  }
+  .support-phone-l{display:flex;align-items:center;gap:8px;min-width:0}
+  .support-phone-l .phone-icon{
+    width:24px;height:24px;border-radius:50%;background:rgba(52,215,139,.12);
+    display:grid;place-items:center;color:var(--green);flex-shrink:0;
+  }
+  .support-phone-l div{min-width:0}
+  .support-phone-l .lbl{font-size:8px;color:#7b8290;letter-spacing:.5px;font-weight:700;line-height:1}
+  .support-phone-l .val{font-size:13px;color:#e0e4ec;font-weight:700;margin-top:3px;letter-spacing:-.2px;line-height:1}
+  .copy-btn{
+    background:rgba(255,96,56,.1);border:1px solid rgba(255,96,56,.28);color:var(--orange);
+    padding:6px 10px;border-radius:5px;font-size:10px;font-weight:700;display:inline-flex;align-items:center;gap:4px;
+    transition:all .15s;flex-shrink:0;
+  }
+  .copy-btn:active{transform:scale(.94)}
+  .copy-btn.copied{background:rgba(52,215,139,.12);border-color:rgba(52,215,139,.3);color:var(--green)}
+
+  .support-channels{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  }
+  .ch-btn{
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    padding:11px 6px 9px;border:1px solid var(--line-2);border-radius:8px;
+    background:rgba(255,255,255,.02);transition:all .15s;
+    color:#c8ccd6;font-size:9px;font-weight:600;
+  }
+  .ch-btn:active{transform:scale(.96)}
+  .ch-btn:hover{border-color:var(--line-3);background:rgba(255,255,255,.04)}
+  .ch-btn svg{width:22px;height:22px;flex-shrink:0}
+  .ch-viber svg{display:none}
+  .ch-viber::before{content:"";width:24px;height:24px;flex-shrink:0;border-radius:6px;background:url("public/viber-app-icon.jpg") center/cover no-repeat;box-shadow:0 2px 6px rgba(115,96,242,.28)}
+  .ch-messenger svg{color:#0084ff}
+  .ch-ig svg{color:#e1306c}
+  .ch-telegram svg{color:#26a5e4}
+
+  /* Commission rules teaser inside contact sheet */
+  .rules-teaser{
+    margin:6px 0 14px;padding:12px;border:1px solid var(--line-2);border-radius:8px;
+    background:linear-gradient(135deg,rgba(255,96,56,.06),transparent 60%);
+  }
+  .rules-teaser-hd{
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;
+  }
+  .rules-teaser-hd strong{font-size:11.5px;font-weight:800}
+  .rules-teaser-hd small{font-size:8px;color:var(--muted);letter-spacing:.4px}
+  .rules-teaser-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
+  }
+  .rt-cell{
+    padding:8px 4px;background:rgba(0,0,0,.24);border-radius:5px;text-align:center;
+    border-top:2px solid #a9b0bc;
+  }
+  .rt-cell.t2{border-top-color:var(--gold)}
+  .rt-cell.t3{border-top-color:var(--ice)}
+  .rt-cell.t4{border-top-color:var(--orange)}
+  .rt-cell .n{font-size:7.5px;color:#8f96a2;font-weight:800;letter-spacing:.4px}
+  .rt-cell .r{font-size:13px;font-weight:900;color:var(--ink);margin-top:3px;letter-spacing:-.2px}
+  .rt-cell small{display:block;margin-top:3px;color:#687281;font-size:6px;white-space:nowrap}
+
+  .divider{height:38px;display:flex;align-items:center;color:#616a76;font-size:7.5px;font-weight:700;letter-spacing:.6px}
+  .divider::before,.divider::after{content:"";height:1px;flex:1;background:var(--line-2)}
+  .divider span{margin:0 10px}
+
+  label{display:grid;gap:6px;margin-bottom:12px;color:#aeb5c0;font-size:9.5px;font-weight:700;letter-spacing:.2px}
+  input,textarea{
+    width:100%;height:48px;padding:0 13px;border:1px solid var(--line-3);border-radius:6px;outline:0;
+    background:#1b212b;color:var(--ink);font-size:11px;transition:border-color .15s,box-shadow .15s;
+  }
+  input:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,96,56,.12)}
+  .primary-action{
+    width:100%;height:52px;border-radius:6px;background:var(--orange);color:#fff;font-size:11.5px;font-weight:900;
+    box-shadow:0 8px 22px rgba(255,96,56,.24);letter-spacing:.4px;
+  }
+  .form-note{text-align:center;color:#5f6671;font-size:7.5px;line-height:1.6;margin:10px 18px 0}
+  .text-action{color:#b8bec8;font-size:9.5px;margin:15px auto;display:block}
+
+  /* Login full page — matches agentbingo.ph/login: dark bg + centered white card */
+  .full-page-panel{
+    min-height:100vh;overflow-y:auto;animation:fade .2s ease-out;
+    background:linear-gradient(180deg,#1e2a3c 0%,#0f1524 100%);
+    display:flex;flex-direction:column;
+  }
+  .panel-nav{
+    height:64px;padding:0 17px;display:grid;grid-template-columns:36px 1fr 36px;align-items:center;
+    position:sticky;top:0;background:rgba(15,21,36,.85);backdrop-filter:blur(20px);
+    z-index:2;border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .panel-nav .brand{justify-self:center}
+  .panel-nav > button{width:36px;height:36px;font-size:28px;color:#c9ced6;line-height:1}
+  .login-brand{
+    text-align:left;padding:26px 22px 0;
+    display:flex;flex-direction:column;line-height:1;
+  }
+  .login-brand strong{font-size:26px;font-style:italic;font-weight:900;color:var(--orange);letter-spacing:-.6px}
+  .login-brand strong i{color:var(--orange-2);font-style:italic}
+  .login-brand small{font-size:9px;letter-spacing:3.2px;margin-top:6px;color:#8b93a1;font-weight:700}
+
+  .login-card{
+    margin:auto 22px;padding:32px 24px 26px;
+    background:#ffffff;border-radius:16px;
+    box-shadow:0 24px 60px rgba(0,0,0,.35),0 4px 12px rgba(0,0,0,.15);
+    color:#1a1f2e;
+  }
+  .login-card h2{
+    margin:0 0 8px;font-size:26px;font-weight:800;color:#1a1f2e;
+    text-align:center;letter-spacing:-.4px;
+  }
+  .login-card > .card-sub{
+    color:#6b7280;font-size:11px;line-height:1.5;margin:0 0 22px;text-align:center;
+  }
+  .login-card label{
+    display:block;color:#9ca3af;font-size:0;margin:0 0 12px;
+  }
+  .login-card input{
+    width:100%;height:48px;padding:0 16px;
+    border:1px solid #e5e7eb;border-radius:8px;
+    background:#f9fafb;color:#1a1f2e;font-size:14px;
+    outline:0;transition:all .15s;
+  }
+  .login-card input::placeholder{color:#9ca3af;font-size:14px}
+  .login-card input:focus{border-color:#3b82f6;background:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.08)}
+  .login-card .pw-wrap{position:relative}
+  .login-card .pw-toggle{
+    position:absolute;right:14px;top:50%;transform:translateY(-50%);
+    color:#9ca3af;font-size:16px;padding:4px;line-height:1;
+  }
+  .login-card .row-inline{
+    display:flex;justify-content:space-between;align-items:center;margin:-4px 0 20px;
+  }
+  .login-card .row-inline label{
+    margin:0;display:inline-flex;gap:6px;align-items:center;
+    color:#6b7280;font-size:12px;font-weight:500;
+  }
+  .login-card .row-inline input[type=checkbox]{
+    width:15px;height:15px;padding:0;margin:0;accent-color:#3b82f6;
+  }
+  .login-card .forgot-link{
+    color:#3b82f6;font-size:12px;font-weight:500;padding:4px 0;
+  }
+  .login-card .login-submit{
+    width:100%;height:48px;
+    background:linear-gradient(135deg,#3b82f6 0%,#4f8dff 100%);
+    color:#fff;font-size:14px;font-weight:700;letter-spacing:.4px;
+    border-radius:8px;box-shadow:0 8px 20px rgba(59,130,246,.28);
+    margin-top:4px;
+  }
+  .login-card .card-footer{
+    margin-top:20px;padding-top:16px;border-top:1px solid #f3f4f6;
+    text-align:center;font-size:11.5px;color:#6b7280;
+  }
+  .login-card .card-footer a,.login-card .card-footer-action{color:var(--orange);font-weight:600;text-decoration:none;padding:0}
+
+  /* ==== Login popup — dark tech dialog ==== */
+  .overlay-center{align-items:center;padding:20px}
+  .auth-modal{
+    position:relative;width:min(100%,440px);
+    border-radius:16px;overflow:hidden;isolation:isolate;
+    background:
+      radial-gradient(100% 60% at 50% -8%, rgba(255,96,56,.16), transparent 62%),
+      linear-gradient(165deg,#171d27 0%,#0e121a 100%);
+    border:1px solid #2b3342;
+    box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03) inset,0 0 42px rgba(255,96,56,.08);
+    animation:rise .28s ease-out;
+  }
+  .auth-modal::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:2;
+    background:linear-gradient(90deg,transparent,var(--orange),var(--gold),transparent);
+  }
+  .auth-modal::after{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55;
+    background-image:linear-gradient(rgba(116,145,182,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(116,145,182,.06) 1px,transparent 1px);
+    background-size:26px 26px;
+    -webkit-mask-image:radial-gradient(120% 85% at 50% 0,#000,transparent 76%);
+    mask-image:radial-gradient(120% 85% at 50% 0,#000,transparent 76%);
+  }
+  .auth-close{
+    position:absolute;z-index:3;top:12px;right:12px;
+    width:32px;height:32px;border-radius:50%;padding:0;line-height:1;
+    display:grid;place-items:center;font-size:19px;
+    color:#aeb5c0;background:rgba(20,25,33,.82);border:1px solid var(--line-3);
+    transition:transform .14s,color .14s,border-color .14s;
+  }
+  .auth-close:active{transform:scale(.94)}
+  .auth-close:hover{color:#fff;border-color:var(--orange)}
+
+  .auth-card{position:relative;z-index:1;padding:30px 22px 20px}
+  .auth-brand{text-align:center;margin-bottom:16px;line-height:1}
+  .auth-brand strong{font-size:19px;font-style:italic;font-weight:900;color:var(--orange);letter-spacing:-.5px}
+  .auth-brand strong i{color:var(--orange-2);font-style:italic}
+  .auth-card h2{margin:0 0 5px;text-align:center;font-size:22px;font-weight:800;letter-spacing:-.3px;color:var(--ink)}
+  .auth-sub{margin:0 0 22px;text-align:center;color:#8f96a2;font-size:10px;letter-spacing:.4px}
+  .auth-field{display:grid;gap:7px;margin-bottom:15px}
+  .auth-lbl{font-size:8px;font-weight:800;letter-spacing:1.4px;color:#7b8494}
+  .auth-card input{
+    width:100%;height:48px;padding:0 14px;border-radius:8px;outline:0;
+    background:#12161d;border:1px solid #2c3442;color:var(--ink);font-size:13px;
+    transition:border-color .15s,box-shadow .15s,background .15s;
+  }
+  .auth-card input::placeholder{color:#5b6270}
+  .auth-card input:focus{border-color:var(--orange);background:#151a22;box-shadow:0 0 0 3px rgba(255,96,56,.14)}
+  .auth-card input.invalid{border-color:var(--red);box-shadow:0 0 0 3px rgba(255,76,94,.12)}
+  .auth-card .pw-wrap{position:relative}
+  .auth-card .pw-toggle{
+    position:absolute;right:10px;top:50%;transform:translateY(-50%);
+    min-width:46px;height:30px;border-radius:6px;
+    color:var(--orange);font-size:9px!important;font-weight:800;letter-spacing:.5px;
+    background:rgba(255,96,56,.1);border:1px solid rgba(255,96,56,.24);
+  }
+  .auth-row{display:flex;justify-content:flex-end;margin:-2px 0 18px}
+  .auth-card .forgot-link{color:var(--orange-2);font-size:11px;font-weight:700;padding:4px 0}
+  .auth-submit{
+    width:100%;height:50px;border-radius:8px;border:0;cursor:pointer;
+    background:linear-gradient(135deg,var(--orange) 0%,#ff8a4d 100%);
+    color:#fff;font-size:13px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+    box-shadow:0 10px 26px rgba(255,96,56,.3);
+    transition:transform .14s,box-shadow .14s,opacity .14s;
+  }
+  .auth-submit:active{transform:translateY(1px);box-shadow:0 4px 12px rgba(255,96,56,.25)}
+  .auth-submit:disabled{opacity:.6;cursor:wait}
+  .auth-secure{
+    margin-top:16px;display:flex;align-items:center;justify-content:center;gap:7px;
+    color:#6b7482;font-size:9px;letter-spacing:.3px;
+  }
+  .auth-secure b{color:var(--green);font-weight:800}
+  .auth-card .back-login{display:block;margin:14px auto 0}
+
+  .login-secure-strip{
+    padding:20px 22px 28px;text-align:center;
+    color:#a4adbf;font-size:10px;line-height:1.6;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .login-secure-strip span{
+    width:20px;height:20px;border-radius:50%;
+    background:rgba(52,215,139,.14);color:var(--green);
+    display:grid;place-items:center;font-size:11px;flex-shrink:0;
+  }
+
+  /* Activity sheet */
+  .activity-visual{
+    height:140px;border-radius:8px;padding:16px;
+    display:flex;flex-direction:column;justify-content:center;
+    margin-bottom:14px;position:relative;overflow:hidden;
+  }
+  .activity-visual.blue{background:linear-gradient(135deg,#1c2948 0%,#131a34 100%);border:1px solid #344569}
+  .activity-visual.orange{background:linear-gradient(135deg,#3a211b 0%,#2b1610 100%);border:1px solid #5c3428}
+  .activity-visual.green{background:linear-gradient(135deg,#172c26 0%,#0e1e19 100%);border:1px solid #2b4d43}
+  .activity-visual .av-tag{color:var(--gold);font-size:8.5px;font-weight:900;letter-spacing:.5px}
+  .activity-visual .av-val{font-size:36px;font-weight:900;margin-top:8px;letter-spacing:-.5px;line-height:1}
+  .activity-visual .av-lbl{color:#929ba8;font-size:8.5px;margin-top:3px}
+  .activity-visual .av-decor{position:absolute;right:-20px;bottom:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);pointer-events:none}
+  .mission-list{display:grid;gap:8px;margin:15px 0 18px}
+  .mission-list > div{min-height:60px;padding:11px;display:flex;align-items:center;gap:14px;background:#191f28;border:1px solid var(--line-2);border-radius:6px}
+  .mission-list > div > span{color:var(--orange);font-size:11px;font-weight:900;flex-shrink:0}
+  .mission-list p{display:grid;gap:3px;margin:0}
+  .mission-list strong{font-size:10.5px;font-weight:700}
+  .mission-list small{color:#777f8c;font-size:9px;line-height:1.4}
+
+  /* Toast */
+  .toast{
+    position:fixed;z-index:100;left:50%;bottom:36px;translate:-50% 0;
+    width:min(calc(100% - 36px),420px);padding:14px 16px;
+    border:1px solid var(--line-3);border-radius:8px;background:#20262f;color:#e8eaee;
+    text-align:center;font-size:13px;box-shadow:0 12px 32px rgba(0,0,0,.6);
+    animation:rise .25s ease-out;
+  }
+
+  @keyframes rise{from{transform:translateY(28px);opacity:0}}
+  @keyframes fade{from{opacity:0}}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;scroll-behavior:auto!important}}
+  /* V2 business-complete states */
+  .tier .t-badge{width:40px;height:46px;border-radius:0;clip-path:polygon(50% 0,92% 18%,84% 78%,50% 100%,16% 78%,8% 18%);box-shadow:0 5px 12px rgba(0,0,0,.32);font-size:13px}
+  .tier .t-hd{min-height:46px}.tier{height:132px}.tier .t-th{min-height:20px}
+  .ggr-control{align-items:center}.ggr-control dd{display:flex!important;align-items:center;gap:5px}.ggr-control button{width:28px;height:28px;border:1px solid #5c5335;border-radius:5px;background:#2d2a20;color:var(--gold);font-size:16px}.ggr-control label{height:30px;margin:0;display:flex;align-items:center;border:1px solid #5c5335;border-radius:5px;background:#171814;padding:0 7px}.ggr-control label span{color:var(--gold)}.ggr-control input{width:74px;height:28px;padding:0 3px;border:0;background:transparent;color:#fff;text-align:right;font-size:10px;box-shadow:none}
+  .support-avatar.third{background:linear-gradient(135deg,#174c3a,#123128);color:#8ce0bd}
+  .field-error{display:block;min-height:11px;margin-top:4px;color:#e5464f;font-size:9px}.login-card label{margin-bottom:7px}.back-login{display:block;margin:14px auto 0}.login-submit:disabled{opacity:.55;cursor:wait}
+  label em{float:right;color:#69717e;font-size:8px;font-style:normal;font-weight:500}.mobile-input{display:flex}.mobile-input>span{height:48px;display:grid;place-items:center;padding:0 11px;border:1px solid var(--line-3);border-right:0;border-radius:6px 0 0 6px;background:#242a35;font-size:10px}.mobile-input input{border-radius:0 6px 6px 0}
+  fieldset{margin:0 0 12px;padding:0;border:0}legend{margin-bottom:7px;color:#aeb5c0;font-size:9.5px;font-weight:700}.callback-times{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.callback-times label{height:40px;margin:0;display:flex;align-items:center;justify-content:center;gap:4px;border:1px solid var(--line-3);border-radius:6px;background:#1b212b;font-size:8px}.callback-times input{width:14px;height:14px;accent-color:var(--orange)}textarea{height:76px;padding-top:12px;resize:none}
+  .signed-in .login-btn{background:#1f7a52;box-shadow:none}.signed-in .your-rank{border-color:rgba(52,215,139,.35)}
+  .contact-tabs{height:42px;margin:0 0 14px;padding:3px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border:1px solid var(--line-2);border-radius:7px;background:#0d1118;position:sticky;top:0;z-index:2}.contact-tabs button{border-radius:5px;color:#737c89;font-size:9px;font-weight:800}.contact-tabs button.selected{background:#252c37;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+  .contact-view{display:none}.contact-view.selected{display:block;animation:fade .16s ease-out}.support-list{display:grid;grid-template-columns:1fr;gap:12px;padding:0;overflow:visible}.support-card{border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.18)}.swipe-note{display:none!important}
+  .swipe-note{height:22px;display:flex;justify-content:center;align-items:center;gap:4px;color:#68717f;font-size:7.5px}.swipe-note i{width:4px;height:4px;border-radius:50%;background:#3c4653}.swipe-note i:first-child{width:13px;border-radius:3px;background:var(--orange)}.swipe-note span{margin-left:4px}
+  .rules-teaser{margin-top:2px}.rules-detail{display:grid;gap:8px}.rules-detail>div{padding:12px;border-left:2px solid #394453;background:#171d25}.rules-detail strong{font-size:10px}.rules-detail p{margin:4px 0 0;color:#7f8996;font-size:8px;line-height:1.55}
+  .login-card{border-radius:8px}.login-card h2{font-size:24px}.login-card .login-submit,.primary-action{transition:transform .14s,opacity .14s,box-shadow .14s}.login-card .login-submit:active,.primary-action:active{transform:translateY(1px);box-shadow:none}.pw-toggle{min-width:42px;font-size:9px!important;font-weight:800}
+  .login-card .input-label{display:block;margin:0 0 6px;color:#4b5563;font-size:11px;font-weight:700}.login-feedback{min-height:14px;margin-top:8px;text-align:center;color:#6b7280;font-size:9px}
+  .login-card input.invalid{border-color:#e5464f;background:#fff7f7}.login-card input.invalid:focus{box-shadow:0 0 0 3px rgba(229,70,79,.1)}
+  .tier{height:140px;overflow:hidden}.tier::after{content:"";position:absolute;right:-18px;bottom:-28px;width:64px;height:64px;border:1px solid rgba(255,255,255,.05);rotate:45deg}.tier.selected::before{content:"SELECTED";position:absolute;right:7px;bottom:5px;color:rgba(255,155,77,.65);font-size:5px;font-weight:900;letter-spacing:1px}.tier.selected .t-badge{filter:drop-shadow(0 4px 6px rgba(255,96,56,.34))}.tier .t-hd{min-height:34px}.tier .t-badge{width:36px;height:42px;font-size:12px}.tier .t-rate{font-size:30px;margin:0}.tier .t-th{min-height:18px;font-size:11px}.earning-example{box-shadow:0 10px 26px rgba(0,0,0,.2);margin-top:14px}.upsell{display:flex;margin-top:12px;padding:14px 16px;font-size:13px}.upsell button{font-size:13px}
+  .qualification-panel.compact{padding:0 12px 12px;margin-top:9px}.qualification-panel.compact::before{margin:0 -12px 10px}.qualification-panel.compact .qualification-head{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:9px}.qualification-panel.compact .qualification-head h3{margin-top:3px;font-size:9.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.qualification-panel.compact .qualification-head button{min-width:64px;height:30px;padding:0 8px;border:1px solid #384351;border-radius:5px;background:#111720;color:#aeb6c2;font-size:7.5px;font-weight:800}
+  .selected-tier-badge{width:34px;height:40px;display:grid;place-items:center;clip-path:polygon(50% 0,92% 18%,84% 78%,50% 100%,16% 78%,8% 18%);background:linear-gradient(145deg,#d5dbe6,#8993a5);color:#10141a;font-size:11px;font-weight:900;filter:drop-shadow(0 5px 7px rgba(0,0,0,.28))}.qualification-panel[data-tier=advance] .selected-tier-badge{background:linear-gradient(145deg,#ffdd77,#c89519)}.qualification-panel[data-tier=platinum] .selected-tier-badge{background:linear-gradient(145deg,#e4f3ff,#76afd5)}.qualification-panel[data-tier=prestige] .selected-tier-badge{background:linear-gradient(145deg,#ff9a69,#cf4217);color:#fff}.qualification-copy{min-width:0}
+  .qualification-expanded{margin-top:10px}.qualification-expanded[hidden]{display:none}.qualification-expanded .benefit-head{margin-top:0}.qualification-line{margin-bottom:8px;padding:8px 9px;border:1px solid #303947;border-radius:6px;background:#141a22;display:flex;justify-content:space-between;align-items:center;gap:10px}.qualification-line span{color:#66717e;font-size:6px;font-weight:900;letter-spacing:.5px}.qualification-line strong{color:#d8dde5;font-size:8px;text-align:right}
+  .benefit-card{padding:10px 10px 11px;border-left:3px solid #aeb7c5;border-radius:5px;background:#111720}.qualification-panel[data-tier=advance] .benefit-card{border-left-color:var(--gold)}.qualification-panel[data-tier=platinum] .benefit-card{border-left-color:var(--ice)}.qualification-panel[data-tier=prestige] .benefit-card{border-left-color:var(--orange)}
+  .earning-example .example-title{margin-bottom:8px}.earning-example dl div{padding:4px 0}.earning-example .total{padding-top:8px}.earning-example .example-note{margin-top:5px}
+  /* Desktop leaderboard sizing */
+  .ranking-section .section-heading{margin-bottom:12px}.rank-tabs{margin-bottom:12px}.rank-tabs button{padding:12px 8px;font-size:13px}
+  .podium{height:210px;padding:16px 12px 0}.podium-item .avatar{width:52px;height:52px;font-size:14px}.podium-item.place-1 .avatar{width:68px;height:68px}.podium-item .p-name{margin-top:8px;font-size:13px}.podium-item .p-val{margin-top:4px;font-size:12px}.podium-item .p-delta{font-size:11px}.podium-item .bar{margin-top:8px;font-size:18px}.podium-item.place-1 .bar{height:72px}.podium-item.place-2 .bar{height:52px}.podium-item.place-3 .bar{height:36px}.podium-item.place-1 .p-crown{top:-18px;font-size:18px}
+  .rank-list-head{height:32px;font-size:10px}.rank-list{height:360px}.rank-list>div{height:48px;min-height:48px;padding:6px 0;grid-template-columns:24px 36px 1fr auto;gap:10px;font-size:13px}.mini-avatar{width:34px;height:34px;font-size:10px}.rank-list>div>b{font-size:13px}.rank-list em{padding:3px 6px;font-size:9px}.rank-list .r-vl{font-size:13px}.rank-list .r-mv{font-size:11px}
+  .earning-example{padding:20px 22px}.example-title strong{font-size:15px}.earning-example dl div{font-size:13px}.earning-example .total dd{font-size:22px}
+  .sheet-heading h2{font-size:24px}.sheet-intro{font-size:13px}.channel-btn{font-size:14px}.apply-head strong{font-size:18px}.primary-action{font-size:14px;height:52px}
+  label{font-size:12px}input,textarea{font-size:14px;height:48px}
+</style>
+
+</head><body><main class="page">
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="BingoPlus Agent Center">
+        <strong>BINGO<i>+</i></strong><small>AGENT CENTER</small>
+      </div>
+      <nav class="pc-nav" aria-label="Primary">
+        <button class="active" data-scroll-target="top">Home</button>
+        <button data-scroll-target="campaigns-section">Campaigns</button>
+        <button data-scroll-target="ranking-section">Ranking</button>
+        <button data-open="contact">Support</button>
+      </nav>
+      <div class="top-actions">
+        <button class="contact-btn" data-open="contact">Contact Us</button>
+        <button class="login-btn" data-open="login">LOGIN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live marquee strip -->
+  <div class="live-strip" role="marquee">
+    <div class="live-strip-inner">
+    <span class="live-dot"></span>
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <span class="marquee-item"><b class="num">328</b> new agents this month</span><i></i>
+        <span class="marquee-item"><b class="num">₱2.4M+</b> commission paid this month</span><i></i>
+        <span class="marquee-item"><b class="num">328</b> new agents this month</span><i></i>
+        <span class="marquee-item"><b class="num">₱2.4M+</b> commission paid this month</span><i></i>
+        <span class="marquee-item"><b class="num">328</b> new agents this month</span><i></i>
+        <span class="marquee-item"><b class="num">₱2.4M+</b> commission paid this month</span><i></i>
+        <span class="marquee-item"><b class="num">328</b> new agents this month</span><i></i>
+        <span class="marquee-item"><b class="num">₱2.4M+</b> commission paid this month</span><i></i>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="page-inner">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Grow your network.<br>Own your progress.</h1>
+      <p>Campaigns, commission and performance — one center built for Bingo+ agents.</p>
+    </div>
+    <div class="hero-bottom">
+      <button class="hero-cta" data-open="contact">Join as an agent <b>›</b></button>
+    </div>
+  </section>
+
+  <!-- F1-6 KPI grid with sparklines -->
+  <section class="metric-grid">
+    <article class="metric-card">
+      <div class="m-lbl">ACTIVE AGENTS</div>
+      <div class="m-val num">12,480</div>
+      <div class="m-delta up">▲ 8.4% <span style="color:var(--muted);font-weight:400">vs last mo</span></div>
+    </article>
+    <article class="metric-card hi">
+      <div class="m-lbl">MONTHLY GGR</div>
+      <div class="m-val num">₱68.2M</div>
+      <div class="m-delta up">▲ 12.6% <span style="color:var(--muted);font-weight:400">vs last mo</span></div>
+    </article>
+    <article class="metric-card">
+      <div class="m-lbl">MONTHLY DEPOSITS</div>
+      <div class="m-val num">₱15.8M</div>
+      <div class="m-delta up">▲ 6.8% <span style="color:var(--muted);font-weight:400">vs last mo</span></div>
+    </article>
+  </section>
+
+  <!-- Main two-column: leaderboard + campaigns/offers -->
+  <div class="main-grid">
+  <!-- F1-4 Leaderboard -->
+  <section class="content-section ranking-section" id="ranking-section">
+    <div class="section-heading">
+      <div>
+        <h2>Agent leaderboard</h2>
+      </div>
+    </div>
+    <div class="rank-tabs" role="tablist">
+      <button class="selected" data-rank="fd">Deposit Amount</button>
+      <button data-rank="commission">Commission</button>
+    </div>
+    <div class="podium" id="podium"><div class="podium-item place-2">
+        
+        <div class="avatar">JM</div>
+        <div class="p-name">J. Mendoza</div>
+        <div class="p-val num">₱183K</div>
+        <div class="p-delta neutral">▬</div>
+        <div class="bar">2</div>
+      </div><div class="podium-item place-1">
+        <div class="p-crown">👑</div>
+        <div class="avatar">RC</div>
+        <div class="p-name">R. Cruz</div>
+        <div class="p-val num">₱241K</div>
+        <div class="p-delta up">▲2</div>
+        <div class="bar">1</div>
+      </div><div class="podium-item place-3">
+        
+        <div class="avatar">AS</div>
+        <div class="p-name">A. Santos</div>
+        <div class="p-val num">₱149K</div>
+        <div class="p-delta dn">▼1</div>
+        <div class="bar">3</div>
+      </div></div>
+
+    <div class="rank-list-head"><span>RANK 4-20</span></div>
+    <div class="rank-list" id="rank-list" tabindex="0" aria-label="Agent rankings 4 through 20"><div>
+        <b class="num">4</b>
+        <span class="mini-avatar">LR</span>
+        <span class="r-nm">L. Reyes</span>
+        <em class="badge-plat">PLATINUM</em>
+        <span class="r-vl num">₱118K</span>
+        <span class="r-mv up">▲3</span>
+      </div><div>
+        <b class="num">5</b>
+        <span class="mini-avatar">MG</span>
+        <span class="r-nm">M. Garcia</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱96K</span>
+        <span class="r-mv neutral">▬</span>
+      </div><div>
+        <b class="num">6</b>
+        <span class="mini-avatar">DV</span>
+        <span class="r-nm">D. Villanueva</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱91K</span>
+        <span class="r-mv up">▲1</span>
+      </div><div>
+        <b class="num">7</b>
+        <span class="mini-avatar">ML</span>
+        <span class="r-nm">M. Lim</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱87K</span>
+        <span class="r-mv dn">▼2</span>
+      </div><div>
+        <b class="num">8</b>
+        <span class="mini-avatar">JF</span>
+        <span class="r-nm">J. Flores</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱83K</span>
+        <span class="r-mv up">▲4</span>
+      </div><div>
+        <b class="num">9</b>
+        <span class="mini-avatar">CR</span>
+        <span class="r-nm">C. Ramos</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱79K</span>
+        <span class="r-mv neutral">▬</span>
+      </div><div>
+        <b class="num">10</b>
+        <span class="mini-avatar">AB</span>
+        <span class="r-nm">A. Bautista</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱75K</span>
+        <span class="r-mv up">▲2</span>
+      </div><div>
+        <b class="num">11</b>
+        <span class="mini-avatar">NG</span>
+        <span class="r-nm">N. Gonzales</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱71K</span>
+        <span class="r-mv dn">▼1</span>
+      </div><div>
+        <b class="num">12</b>
+        <span class="mini-avatar">RT</span>
+        <span class="r-nm">R. Torres</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱68K</span>
+        <span class="r-mv up">▲1</span>
+      </div><div>
+        <b class="num">13</b>
+        <span class="mini-avatar">PM</span>
+        <span class="r-nm">P. Mercado</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱65K</span>
+        <span class="r-mv neutral">▬</span>
+      </div><div>
+        <b class="num">14</b>
+        <span class="mini-avatar">CS</span>
+        <span class="r-nm">C. Santiago</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱62K</span>
+        <span class="r-mv dn">▼3</span>
+      </div><div>
+        <b class="num">15</b>
+        <span class="mini-avatar">EL</span>
+        <span class="r-nm">E. Lopez</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱59K</span>
+        <span class="r-mv up">▲2</span>
+      </div><div>
+        <b class="num">16</b>
+        <span class="mini-avatar">BN</span>
+        <span class="r-nm">B. Navarro</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱56K</span>
+        <span class="r-mv neutral">▬</span>
+      </div><div>
+        <b class="num">17</b>
+        <span class="mini-avatar">KT</span>
+        <span class="r-nm">K. Tan</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱53K</span>
+        <span class="r-mv up">▲5</span>
+      </div><div>
+        <b class="num">18</b>
+        <span class="mini-avatar">AR</span>
+        <span class="r-nm">A. Rivera</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱50K</span>
+        <span class="r-mv dn">▼2</span>
+      </div><div>
+        <b class="num">19</b>
+        <span class="mini-avatar">JP</span>
+        <span class="r-nm">J. Pascual</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱47K</span>
+        <span class="r-mv up">▲1</span>
+      </div><div>
+        <b class="num">20</b>
+        <span class="mini-avatar">LM</span>
+        <span class="r-nm">L. Morales</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱44K</span>
+        <span class="r-mv neutral">▬</span>
+      </div><div>
+        <b class="num">21</b>
+        <span class="mini-avatar">FT</span>
+        <span class="r-nm">F. Tolentino</span>
+        <em class="badge-adv">ADVANCE</em>
+        <span class="r-vl num">₱41K</span>
+        <span class="r-mv dn">▼1</span>
+      </div><div>
+        <b class="num">22</b>
+        <span class="mini-avatar">GC</span>
+        <span class="r-nm">G. Castillo</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱38K</span>
+        <span class="r-mv up">▲3</span>
+      </div><div>
+        <b class="num">23</b>
+        <span class="mini-avatar">SD</span>
+        <span class="r-nm">S. Domingo</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱35K</span>
+        <span class="r-mv neutral">▬</span>
+      </div><div>
+        <b class="num">24</b>
+        <span class="mini-avatar">MR</span>
+        <span class="r-nm">M. Reyes</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱32K</span>
+        <span class="r-mv up">▲2</span>
+      </div><div>
+        <b class="num">25</b>
+        <span class="mini-avatar">AP</span>
+        <span class="r-nm">A. Perez</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱29K</span>
+        <span class="r-mv dn">▼2</span>
+      </div><div>
+        <b class="num">26</b>
+        <span class="mini-avatar">IC</span>
+        <span class="r-nm">I. Cruz</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱26K</span>
+        <span class="r-mv neutral">▬</span>
+      </div><div>
+        <b class="num">27</b>
+        <span class="mini-avatar">RV</span>
+        <span class="r-nm">R. Valdez</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱23K</span>
+        <span class="r-mv up">▲1</span>
+      </div><div>
+        <b class="num">28</b>
+        <span class="mini-avatar">HM</span>
+        <span class="r-nm">H. Mendoza</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱20K</span>
+        <span class="r-mv dn">▼1</span>
+      </div><div>
+        <b class="num">29</b>
+        <span class="mini-avatar">CT</span>
+        <span class="r-nm">C. Trinidad</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱17K</span>
+        <span class="r-mv up">▲2</span>
+      </div><div>
+        <b class="num">30</b>
+        <span class="mini-avatar">EP</span>
+        <span class="r-nm">E. Pena</span>
+        <em class="badge-gen">GENERAL</em>
+        <span class="r-vl num">₱14K</span>
+        <span class="r-mv neutral">▬</span>
+      </div></div>
+  </section>
+
+  <div class="side-stack">
+  <!-- F1-3 Agent campaigns -->
+  <section class="content-section" id="campaigns-section">
+    <div class="section-heading">
+      <div>
+        <h2>Agent campaigns</h2>
+      </div>
+    </div>
+    <div class="campaign-carousel">
+      <button class="campaign-card blue" data-activity="platinum">
+        <div class="cc-top">
+          <span class="cc-tag">LIMITED</span>
+          <span class="cc-timer num">6d 14h left</span>
+        </div>
+        <div class="cc-body">
+          <h3>Fast-track to Platinum</h3>
+        </div>
+      </button>
+      <button class="campaign-card orange" data-activity="deposit">
+        <div class="cc-top">
+          <span class="cc-tag">DEPOSITS</span>
+          <span class="cc-timer num">14d 08h left</span>
+        </div>
+        <div class="cc-body">
+          <h3>Deposit Sprint</h3>
+        </div>
+      </button>
+      <button class="campaign-card green" data-activity="launch">
+        <div class="cc-top">
+          <span class="cc-tag">NEW AGENT</span>
+          <span class="cc-timer num">30 days</span>
+        </div>
+        <div class="cc-body">
+          <h3>30-Day Launch Bonus</h3>
+        </div>
+      </button>
+    </div>
+  </section>
+  </div>
+  </div>
+
+  <!-- F1-2 Member offers -->
+  <section class="content-section">
+    <div class="section-heading">
+      <div>
+        <h2>Member offers</h2>
+      </div>
+    </div>
+    <div class="offers-carousel">
+      <article class="offer-card">
+        <img class="offer-img" src="public/member-offer-bingo-speed.png" alt="Welcome Deposit Boost">
+        <div class="offer-body">
+          <strong>Welcome Deposit Boost</strong>
+          <p>150% match on first deposit. Ideal for cold leads and re-engagement.</p>
+          <button type="button" class="offer-share" data-toast="Referral link copied · palcode auto-appended">Copy link <b>›</b></button>
+        </div>
+      </article>
+      <article class="offer-card">
+        <img class="offer-img" src="public/member-offer-bingo-speed.png" alt="Weekend Cashback 3× Boost">
+        <div class="offer-body">
+          <strong>Weekend Cashback 3× Boost</strong>
+          <p>Triple cashback for weekend players. Highest RD conversion.</p>
+          <button type="button" class="offer-share" data-toast="Referral link copied · palcode auto-appended">Copy link <b>›</b></button>
+        </div>
+      </article>
+      <article class="offer-card">
+        <img class="offer-img" src="public/member-offer-bingo-speed.png" alt="Daily Login Bonus ₱88">
+        <div class="offer-body">
+          <strong>Daily Login Bonus ₱88</strong>
+          <p>Free ₱88 on first daily login. Great for retention hooks.</p>
+          <button type="button" class="offer-share" data-toast="Referral link copied · palcode auto-appended">Copy link <b>›</b></button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- F1-5 Commission tiers -->
+  <section class="content-section commission-section">
+    <div class="section-heading">
+      <div>
+        <h2>Commission tiers</h2>
+      </div>
+    </div>
+    <div class="tier-grid" id="tier-grid">
+      <button class="tier silver" data-tier="general" data-rate="20" data-name="General" data-threshold="≥5 Monthly Active">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">GENERAL</span><span class="t-badge">G</span></div>
+        <div class="t-rate num">20%</div>
+        <div class="t-th"><b>≥5</b> Monthly Active</div>
+      </button>
+      <button class="tier gold" data-tier="advance" data-rate="25" data-name="Advanced" data-threshold="20 Monthly Active · ≥₱300K GGR">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">ADVANCED</span><span class="t-badge">A</span></div>
+        <div class="t-rate num">25%</div>
+        <div class="t-th"><b>20</b> Active · <b>≥₱300K</b> GGR</div>
+      </button>
+      <button class="tier ice selected" data-tier="platinum" data-rate="30" data-name="Platinum" data-threshold="50 Monthly Active · ≥₱1M GGR">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">PLATINUM</span><span class="t-badge">P</span></div>
+        <div class="t-rate num">30%</div>
+        <div class="t-th"><b>50</b> Active · <b>≥₱1M</b> GGR</div>
+      </button>
+      <button class="tier orange" data-tier="prestige" data-rate="35" data-name="Prestige" data-threshold="150 Monthly Active · ≥₱5M GGR">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">PRESTIGE</span><span class="t-badge">★</span></div>
+        <div class="t-rate num">35%</div>
+        <div class="t-th"><b>150</b> Active · <b>≥₱5M</b> GGR</div>
+      </button>
+    </div>
+
+    <article class="earning-example">
+      <div class="example-title">
+        <span class="coin">₱</span>
+        <div>
+          <strong>Commission estimate · <span id="example-tier-name">Platinum</span></strong>
+        </div>
+      </div>
+      <dl>
+        <div class="ggr-control"><dt>Monthly net GGR</dt><dd><button type="button" data-ggr-step="-10000" aria-label="Reduce GGR">−</button><label><span>₱</span><input id="ggr-input" inputmode="numeric" value="200,000" aria-label="Monthly net GGR"></label><button type="button" data-ggr-step="10000" aria-label="Increase GGR">+</button></dd></div>
+        <div class="total"><dt>Estimated earnings</dt><dd class="num" id="example-earnings">₱60,000</dd></div>
+      </dl>
+    </article>
+
+    <article class="qualification-panel compact" id="qualification-panel" aria-live="polite" data-tier="platinum">
+      <div class="qualification-head"><span class="selected-tier-badge" id="selected-tier-badge" aria-hidden="true">P</span><div class="qualification-copy"><span id="qualification-kicker">PLATINUM BENEFITS</span></div><button id="toggle-qualification" type="button" aria-expanded="false">View all</button></div>
+      <div class="qualification-expanded" id="qualification-expanded" hidden=""><div class="qualification-line"><span>SUITABLE FOR</span><strong id="qualification-suitable">Diversified channels with strong expansion intent</strong></div><div class="benefit-card"><div class="benefit-head"><span>LEVEL BENEFITS</span></div><ul class="benefit-list" id="qualification-benefits"><li>TV equipment for live content and Wi-Fi support</li><li>Upgraded gifts, rewards and Platinum certification medal</li><li>Eligibility for selected offline activities</li></ul></div></div>
+    </article>
+
+    <div class="upsell" id="upsell-line">
+        <div>Reach <b>Prestige</b> and earn up to <b class="num">₱70,000</b> at the same GGR.</div>
+        <button data-select-tier="prestige">Preview Prestige ›</button>
+      </div>
+  </section>
+
+
+  </div><!-- /.page-inner -->
+
+  <!-- ================= Overlays ================= -->
+
+  <!-- Login page — matches agentbingo.ph/login layout (dark bg + centered white card) -->
+  <div class="overlay overlay-center" id="login-panel" hidden="">
+    <section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+      <button class="auth-close" data-close="" aria-label="Close">×</button>
+      <div class="auth-card" id="sign-in-card">
+        <div class="auth-brand"><strong>BINGO<i>+</i></strong></div>
+        <h2 id="login-title">Merchant Center</h2>
+        <form id="login-form" novalidate="">
+        <label class="auth-field">
+          <span class="auth-lbl">USERNAME</span>
+          <input type="text" placeholder="Enter username" autocomplete="username" id="login-account">
+          <span class="field-error" id="login-account-error"></span>
+        </label>
+        <label class="auth-field">
+          <span class="auth-lbl">PASSWORD</span>
+          <div class="pw-wrap">
+            <input type="password" placeholder="Enter password" autocomplete="current-password" id="login-password">
+            <button class="pw-toggle" id="pw-toggle" aria-label="Show password" type="button">SHOW</button>
+          </div>
+          <span class="field-error" id="login-password-error"></span>
+        </label>
+        <div class="auth-row">
+          <button class="forgot-link" id="forgot-password" type="button">Forgot Password?</button>
+        </div>
+        <button class="auth-submit" id="login-submit" type="submit">Login</button>
+        </form>
+        <div class="login-feedback" id="login-feedback" aria-live="polite"></div>
+      </div>
+      <div class="auth-card" id="recovery-card" hidden="">
+        <h2>Recover access</h2>
+        <p class="auth-sub">Enter your registered account. Support will verify your identity before resetting access.</p>
+        <form id="recovery-form" novalidate=""><label class="auth-field"><span class="auth-lbl">ACCOUNT</span><input id="recovery-account" placeholder="Registered phone / email / account"><span class="field-error" id="recovery-error"></span></label><button class="auth-submit" type="submit">Request support</button></form>
+        <button class="forgot-link back-login" id="back-login" type="button">Back to login</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact Us panel — icons for Viber/Messenger/IG/Telegram + phone with copy + commission rules teaser + callback form -->
+  <div class="overlay" id="contact-panel" hidden="">
+    <section class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+      <div class="sheet-handle"></div>
+      <div class="sheet-heading">
+        <div>
+          <h2 id="contact-title">Contact Us</h2>
+        </div>
+        <button data-close="" aria-label="Close">×</button>
+      </div>
+
+      <div id="contact-form-view">
+      <span class="contact-label">Dedicated support channels</span>
+      <div class="channel-row">
+        <button class="channel-btn ch-messenger-lg" data-deeplink="https://m.me/gerry.alimes" data-channel="Messenger">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 4.97 0 11.11c0 3.49 1.73 6.61 4.44 8.65V24l4.06-2.23c1.08.3 2.23.46 3.5.46 6.63 0 12-4.97 12-11.11S18.63 0 12 0zm1.19 14.94l-3.05-3.25-5.95 3.26 6.55-6.95 3.13 3.24 5.87-3.24-6.55 6.94z"/></svg>
+          <span>Messenger</span>
+        </button>
+        <button class="channel-btn ch-viber-lg" data-deeplink="https://vb.me/639171836864" data-channel="Viber">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4.03C10.13.09 6.35.42 4.24 2.35 2.68 3.87 2.14 6.11 2.08 8.89c-.06 2.77-.14 7.97 4.87 9.38h.01l-.01 2.15s-.03.87.54 1.05c.68.21.94-.13 3.13-2.66.01 0 .82.05 2.24.05h.11c.71 0 3.02 0 5.03-.14 3.87-.28 4.42-2.99 4.48-3.28.09-.4.66-3.15.66-6.05 0-2.9-.58-6.03-2.34-7.86-1.9-1.97-4.32-2.28-6.85-2.28C13.13.24 12.28.02 11.4.03zM11.53 6.55c.42.03.79.14 1.09.31.42.24.71.65.87 1.24.05.18.06.32.03.44-.05.19-.19.28-.42.28-.09 0-.16-.01-.22-.04-.16-.07-.22-.19-.31-.4-.09-.22-.16-.31-.36-.4-.16-.07-.36-.11-.6-.11-.13 0-.24.02-.32.05-.19.07-.28.19-.28.36 0 .09.03.16.09.22.11.11.31.19.6.26l.4.11c.4.11.71.28.94.5.24.24.36.55.36.92 0 .43-.14.79-.43 1.07-.28.28-.68.4-1.19.4-.47 0-.87-.11-1.19-.34-.34-.24-.55-.55-.65-.94-.03-.11-.05-.22-.05-.34 0-.11.03-.19.09-.24.05-.05.13-.07.24-.07.13 0 .22.02.28.07.09.06.16.16.22.32.09.22.19.36.34.44.14.09.34.13.6.13.24 0 .43-.05.55-.14.11-.09.16-.19.16-.32 0-.13-.05-.22-.14-.28z"/></svg>
+          <span>Viber</span>
+        </button>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <div class="apply-head">
+        <strong>Become an agent</strong>
+        <small>A dedicated specialist will contact you within 24 hours.</small>
+      </div>
+      <form id="contact-form" novalidate="">
+        <label>Name<input placeholder="Your name" id="cb-name" autocomplete="name"><span class="field-error"></span></label>
+        <fieldset class="contact-methods" id="cb-method-group">
+          <legend>Contact method</legend>
+          <div class="contact-method-grid">
+            <label><input type="radio" name="cb-method" value="Phone" checked>Phone</label>
+            <label><input type="radio" name="cb-method" value="Viber">Viber</label>
+            <label><input type="radio" name="cb-method" value="Messenger">Messenger</label>
+            <label><input type="radio" name="cb-method" value="Email">Email</label>
+          </div>
+          <span class="field-error" id="cb-method-error"></span>
+        </fieldset>
+        <label>Contact<input placeholder="09XX XXX XXXX" id="cb-contact"><span class="field-error"></span></label>
+        <button class="primary-action" id="submit-contact" type="submit">SUBMIT APPLICATION</button>
+      </form>
+      </div>
+
+      <div id="contact-success-view" hidden="">
+        <div class="apply-success">
+          <div class="success-check" aria-hidden="true">✓</div>
+          <h3>Application submitted</h3>
+          <p>Your application has been submitted.<br>Our specialist will contact you shortly.</p>
+          <button class="primary-action" data-close="">Done</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Activity detail panel -->
+  <div class="overlay" id="activity-panel" hidden="">
+    <section class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="activity-title">
+      <div class="sheet-handle"></div>
+      <div class="sheet-heading">
+        <div>
+          <span class="section-kicker">AGENT CAMPAIGN</span>
+          <h2 id="activity-title">Campaign</h2>
+        </div>
+        <button data-close="" aria-label="Close">×</button>
+      </div>
+      <div class="activity-visual blue" id="activity-visual">
+        <div class="av-decor"></div>
+        <span class="av-tag" id="activity-tag">LIMITED</span>
+        <strong class="av-val num" id="activity-progress">68%</strong>
+        <small class="av-lbl">Mission progress</small>
+      </div>
+      <p class="sheet-intro" id="activity-copy"></p>
+      <div class="mission-list">
+        <div><span>01</span><p><strong>Build qualified activity</strong><small>Invite and support eligible active players in your region.</small></p></div>
+        <div><span>02</span><p><strong>Reach the target</strong><small>Progress updates within 24 hours after each verified deposit.</small></p></div>
+        <div><span>03</span><p><strong>Claim your reward</strong><small>Sign in to view your exact eligibility and reward amount.</small></p></div>
+      </div>
+      <button class="primary-action" id="activity-login">LOGIN TO PARTICIPATE</button>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" hidden=""></div>
+</main>
+
+<script>
+  const agents = [
+    ["RC","R. Cruz"],["JM","J. Mendoza"],["AS","A. Santos"],["LR","L. Reyes"],["MG","M. Garcia"],
+    ["DV","D. Villanueva"],["ML","M. Lim"],["JF","J. Flores"],["CR","C. Ramos"],["AB","A. Bautista"],
+    ["NG","N. Gonzales"],["RT","R. Torres"],["PM","P. Mercado"],["CS","C. Santiago"],["EL","E. Lopez"],
+    ["BN","B. Navarro"],["KT","K. Tan"],["AR","A. Rivera"],["JP","J. Pascual"],["LM","L. Morales"],
+    ["FT","F. Tolentino"],["GC","G. Castillo"],["SD","S. Domingo"],["MR","M. Reyes"],["AP","A. Perez"],
+    ["IC","I. Cruz"],["RV","R. Valdez"],["HM","H. Mendoza"],["CT","C. Trinidad"],["EP","E. Pena"]
+  ];
+  const fdValues = [241,183,149,118,96,91,87,83,79,75,71,68,65,62,59,56,53,50,47,44,41,38,35,32,29,26,23,20,17,14];
+  const commissionValues = [286,241,198,183,149,137,128,119,111,104,97,91,85,79,73,68,63,58,53,48,44,40,36,32,28,24,20,17,14,11];
+  const movement = ["▲2","▬","▼1","▲3","▬","▲1","▼2","▲4","▬","▲2","▼1","▲1","▬","▼3","▲2","▬","▲5","▼2","▲1","▬","▼1","▲3","▬","▲2","▼2","▬","▲1","▼1","▲2","▬"];
+  const tierFor = value => value >= 200 ? "prest" : value >= 100 ? "plat" : value >= 40 ? "adv" : "gen";
+  const makeRanking = (values, offset=0) => values.map((value,index) => { const agent=agents[(index+offset)%agents.length]; return [agent[0],agent[1],`₱${value}K`,tierFor(value),movement[index]]; });
+  const rankData = { fd: makeRanking(fdValues), commission: makeRanking(commissionValues,6) };
+  const badgeMap = {
+    prest: ["PRESTIGE","badge-prest"],
+    plat: ["PLATINUM","badge-plat"],
+    adv: ["ADVANCE","badge-adv"],
+    gen: ["GENERAL","badge-gen"]
+  };
+  const moveClass = mv => {
+    if (mv.startsWith("▲")) return "up";
+    if (mv.startsWith("▼")) return "dn";
+    return "neutral";
+  };
+  const activityData = {
+    platinum:{title:"Fast-track to Platinum",tag:"LIMITED",progress:"68%",tone:"blue",copy:"Invite 5 qualified players and unlock an elevated commission tier for 30 days. Every qualified deposit ≥ ₱200 counts."},
+    deposit:{title:"Deposit Sprint",tag:"DEPOSITS",progress:"44%",tone:"orange",copy:"Grow your active player base and earn milestone rewards at 50 / 100 / 200 deposits this month."},
+    launch:{title:"30-Day Launch Bonus",tag:"NEW AGENT",progress:"26%",tone:"green",copy:"For new agents in their first 30 days: complete the launch mission for double commission across the introductory window."}
+  };
+
+  const panels = [...document.querySelectorAll(".overlay")];
+  const toast = document.getElementById("toast");
+  let toastTimer;
+  function showToast(msg){
+    toast.textContent = msg; toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.hidden = true, 2600);
+  }
+  function closePanels(){
+    panels.forEach(p => p.hidden = true);
+    document.body.style.overflow = "";
+    // reset contact sheet back to the form view for next open
+    const cfv=document.getElementById("contact-form-view"), csv=document.getElementById("contact-success-view");
+    if(cfv&&csv){ cfv.hidden=false; csv.hidden=true; }
+  }
+  function openPanel(name){
+    if(name === "login" && document.querySelector(".page").classList.contains("signed-in")){ showToast("Welcome to My Center"); return; }
+    closePanels();
+    const el = document.getElementById(name+"-panel");
+    if(!el) return;
+    el.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  const maskName = name => name.split(" ").map((part,i,arr) => {
+    if(i < arr.length-1) return part;            // keep leading initials (e.g. "R.")
+    if(part.length <= 2) return part[0] + "*";
+    return part[0] + "*".repeat(part.length-2) + part[part.length-1];
+  }).join(" ");
+  function renderRank(key){
+    const rows = rankData[key];
+    const list = document.getElementById("rank-list");
+    list.scrollTop = 0;
+    const order = [1,0,2], places = [2,1,3];
+    document.getElementById("podium").innerHTML = order.map((idx,i) => {
+      const r = rows[idx], place = places[i];
+      const [initials, name, val] = r;
+      const crown = place===1 ? '<div class="p-crown">👑</div>' : '';
+      return `<div class="podium-item place-${place}">
+        ${crown}
+        <div class="avatar">${initials}</div>
+        <div class="p-name">${maskName(name)}</div>
+        <div class="p-val num">${val}</div>
+        <div class="bar">${place}</div>
+      </div>`;
+    }).join("");
+    list.innerHTML = rows.slice(3,20).map((r,i) => {
+      const [initials, name, val] = r;
+      return `<div>
+        <b class="num">${i+4}</b>
+        <span class="mini-avatar">${initials}</span>
+        <span class="r-nm">${maskName(name)}</span>
+        <span class="r-vl num">${val}</span>
+      </div>`;
+    }).join("");
+  }
+
+  document.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openPanel(b.dataset.open)));
+  const navButtons=[...document.querySelectorAll("[data-scroll-target]")];
+  navButtons.forEach(button=>button.addEventListener("click",()=>{
+    const target=button.dataset.scrollTarget;
+    if(target==="top") window.scrollTo({top:0,behavior:"smooth"});
+    else document.getElementById(target)?.scrollIntoView({behavior:"smooth",block:"start"});
+    document.querySelectorAll(".pc-nav button").forEach(item=>item.classList.toggle("active",item===button));
+  }));
+  document.querySelectorAll(".pc-nav [data-open]").forEach(button=>button.addEventListener("click",()=>{
+    document.querySelectorAll(".pc-nav button").forEach(item=>item.classList.toggle("active",item===button));
+  }));
+  document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", closePanels));
+  document.querySelectorAll("[data-toast]").forEach(b => b.addEventListener("click", () => showToast(b.dataset.toast)));
+  document.querySelectorAll("[data-rank]").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll("[data-rank]").forEach(x => x.classList.remove("selected"));
+    b.classList.add("selected");
+    renderRank(b.dataset.rank);
+  }));
+  document.querySelectorAll("[data-activity]").forEach(b => b.addEventListener("click", () => {
+    const d = activityData[b.dataset.activity];
+    document.getElementById("activity-title").textContent = d.title;
+    document.getElementById("activity-tag").textContent = d.tag;
+    document.getElementById("activity-progress").textContent = d.progress;
+    document.getElementById("activity-copy").textContent = d.copy;
+    document.getElementById("activity-visual").className = "activity-visual "+d.tone;
+    openPanel("activity");
+  }));
+  document.getElementById("activity-login").addEventListener("click", () => openPanel("login"));
+  const contactPlaceholders = {
+    Phone: "09XX XXX XXXX",
+    Viber: "Viber number or link",
+    Messenger: "Messenger handle or m.me link",
+    Email: "name@example.com"
+  };
+  const contactInput = document.getElementById("cb-contact");
+  const methodError = document.getElementById("cb-method-error");
+  function getSelectedContactMethod(){
+    const selected = document.querySelector('input[name="cb-method"]:checked');
+    return selected ? selected.value : "";
+  }
+  function updateContactPlaceholder(){
+    const method = getSelectedContactMethod();
+    contactInput.placeholder = contactPlaceholders[method] || "Number, handle or email";
+  }
+  document.querySelectorAll('input[name="cb-method"]').forEach(radio => {
+    radio.addEventListener("change", () => {
+      updateContactPlaceholder();
+      methodError.textContent = "";
+    });
+  });
+  updateContactPlaceholder();
+  document.getElementById("contact-form").addEventListener("submit", event => {
+    event.preventDefault();
+    const name=document.getElementById("cb-name"), contact=contactInput;
+    const method = getSelectedContactMethod();
+    const methodValid = !!method;
+    const contactValid = !!contact.value.trim();
+    name.closest("label").querySelector(".field-error").textContent = name.value.trim() ? "" : "Enter your name";
+    methodError.textContent = methodValid ? "" : "Select a contact method";
+    contact.closest("label").querySelector(".field-error").textContent = contactValid ? "" : "Enter your contact details";
+    if(!name.value.trim() || !methodValid || !contactValid) return;
+    event.target.reset();
+    document.querySelector('input[name="cb-method"][value="Phone"]').checked = true;
+    updateContactPlaceholder();
+    methodError.textContent = "";
+    document.getElementById("contact-form-view").hidden=true;
+    document.getElementById("contact-success-view").hidden=false;
+  });
+  panels.forEach(p => p.addEventListener("mousedown", e => { if(e.target === p) closePanels(); }));
+  document.addEventListener("keydown", e => { if(e.key === "Escape") closePanels(); });
+
+  // ==== Tier click → recalculate commission example ====
+  let currentGgr = 200000;
+  const formatPHP = n => "₱" + n.toLocaleString("en-PH");
+  const tierRates = {general:20, advance:25, platinum:30, prestige:35};
+  const tierOrder = ["general","advance","platinum","prestige"];
+  const tierLabel = {general:"General", advance:"Advanced", platinum:"Platinum", prestige:"Prestige"};
+  const tierMark = {general:"G", advance:"A", platinum:"P", prestige:"★"};
+  const tierDetails = {
+    general:{suitable:"Individual entrepreneurs and small shops",preview:"Basic in-store promotional materials",benefits:["Promotional posters, display racks and in-store brand materials"]},
+    advance:{suitable:"Merchants with certain resources and venues",preview:"Wi-Fi, gifts & new-reward support",benefits:["Wi-Fi network provision","Small-gift and new-reward support"]},
+    platinum:{suitable:"Diversified channels with strong expansion intent",preview:"TV, Wi-Fi & Platinum certification",benefits:["TV (live content) and Wi-Fi network provision","Small-gift and new-reward upgrade","Platinum affiliate certification medal","Eligibility for offline activities"]},
+    prestige:{suitable:"Partners aiming for large-scale development",preview:"Platinum rights + A/C, décor & dedicated support",benefits:["All Platinum benefits, plus air-conditioning installation","Store-decoration packages with multiple options","Honor Affiliate certification medal","Dedicated customer-service / support hotline","Exclusive offline marketing activities"]}
+  };
+
+  function selectTier(key){
+    document.querySelectorAll(".tier").forEach(el => {
+      el.classList.toggle("selected", el.dataset.tier === key);
+    });
+    const rate = tierRates[key];
+    const earnings = Math.round(currentGgr * rate / 100);
+    document.getElementById("example-tier-name").textContent = tierLabel[key];
+    document.getElementById("example-earnings").textContent = formatPHP(earnings);
+    const detail=tierDetails[key];
+    document.getElementById("qualification-panel").dataset.tier=key;
+    document.getElementById("selected-tier-badge").textContent=tierMark[key];
+    document.getElementById("qualification-kicker").textContent=`${tierLabel[key].toUpperCase()} BENEFITS`;
+    document.getElementById("qualification-suitable").textContent=detail.suitable;
+    document.getElementById("qualification-benefits").innerHTML=detail.benefits.map(item=>`<li>${item}</li>`).join("");
+
+    // Upsell: show next tier up (if any); if already Prestige, show delta from General
+    const idx = tierOrder.indexOf(key);
+    const upsell = document.getElementById("upsell-line");
+    if(idx < tierOrder.length - 1){
+      const nextKey = tierOrder[idx + 1];
+      const nextRate = tierRates[nextKey];
+      const nextEarnings = Math.round(currentGgr * nextRate / 100);
+      upsell.innerHTML = `
+        <div>Reach <b>${tierLabel[nextKey]}</b> and earn up to <b class="num">${formatPHP(nextEarnings)}</b> at the same GGR.</div>
+        <button data-select-tier="${nextKey}">Preview ${tierLabel[nextKey]} ›</button>
+      `;
+    } else {
+      const genEarnings = Math.round(currentGgr * tierRates.general / 100);
+      const delta = earnings - genEarnings;
+      upsell.innerHTML = `
+        <div>At <b>Prestige</b>, you earn <b class="num">${formatPHP(delta)}</b> more per month than an entry-tier agent.</div>
+        <button data-open="contact">Ask about qualification ›</button>
+      `;
+    }
+    // Rebind toast on the newly-injected upsell button
+    upsell.querySelectorAll("[data-select-tier]").forEach(b => b.addEventListener("click", () => selectTier(b.dataset.selectTier)));
+    upsell.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openPanel(b.dataset.open)));
+  }
+  document.querySelectorAll(".tier[data-tier]").forEach(t => {
+    t.addEventListener("click", () => selectTier(t.dataset.tier));
+  });
+  document.getElementById("toggle-qualification").addEventListener("click",event=>{const expanded=document.getElementById("qualification-expanded"),open=expanded.hidden;expanded.hidden=!open;event.currentTarget.textContent=open?"Hide":"View all";event.currentTarget.setAttribute("aria-expanded",String(open))});
+  const ggrInput=document.getElementById("ggr-input");
+  function updateGgr(value){ currentGgr=Math.max(0,Math.min(999999999,Number(value)||0)); ggrInput.value=currentGgr.toLocaleString("en-PH"); const selected=document.querySelector(".tier.selected"); selectTier(selected?selected.dataset.tier:"platinum"); }
+  ggrInput.addEventListener("focus",()=>ggrInput.select());
+  ggrInput.addEventListener("input",()=>updateGgr(ggrInput.value.replace(/\D/g,"")));
+  document.querySelectorAll("[data-ggr-step]").forEach(button=>button.addEventListener("click",()=>updateGgr(currentGgr+Number(button.dataset.ggrStep))));
+
+  // ==== Password toggle (login) ====
+  const pwToggle = document.getElementById("pw-toggle");
+  const pwInput = document.getElementById("login-password");
+  if(pwToggle && pwInput){
+    pwToggle.addEventListener("click", () => {
+      const showing = pwInput.type === "text";
+      pwInput.type = showing ? "password" : "text";
+      pwToggle.textContent = showing ? "SHOW" : "HIDE";
+      pwToggle.setAttribute("aria-label", showing ? "Show password" : "Hide password");
+    });
+  }
+
+  // ==== Login, recovery and signed-in state ====
+  const loginForm=document.getElementById("login-form"), loginSubmit=document.getElementById("login-submit");
+  loginForm.addEventListener("submit", event => {
+    event.preventDefault(); const account=document.getElementById("login-account"), password=document.getElementById("login-password");
+    const accountOk=!!account.value.trim(), passwordOk=!!password.value;
+    document.getElementById("login-account-error").textContent=accountOk?"":"Enter your account"; document.getElementById("login-password-error").textContent=passwordOk?"":"Enter your password";
+    account.classList.toggle("invalid",!accountOk); password.classList.toggle("invalid",!passwordOk);
+    document.getElementById("login-feedback").textContent=accountOk&&passwordOk?"Connecting securely...":"Check the highlighted fields";
+    if(!accountOk || !passwordOk) return;
+    if(document.getElementById("remember-me")?.checked) localStorage.setItem("bingo-agent-account",account.value.trim()); else localStorage.removeItem("bingo-agent-account");
+    loginSubmit.disabled=true; loginSubmit.textContent="Signing in...";
+    setTimeout(()=>{ loginSubmit.disabled=false; loginSubmit.textContent="Login"; document.querySelector(".page").classList.add("signed-in"); document.querySelectorAll(".login-btn").forEach(b=>b.textContent="MY CENTER"); const rank=document.querySelector(".your-rank-l"); if(rank) rank.innerHTML='<span class="yr-av">ME</span><div><strong>Welcome back, Agent</strong><small>Your full rank and values are now available</small></div>'; document.getElementById("login-feedback").textContent=""; closePanels(); showToast("Signed in · Agent dashboard is ready"); },850);
+  });
+  document.getElementById("forgot-password").addEventListener("click",()=>{document.getElementById("sign-in-card").hidden=true;document.getElementById("recovery-card").hidden=false;document.getElementById("recovery-account").focus()});
+  document.getElementById("back-login").addEventListener("click",()=>{document.getElementById("recovery-card").hidden=true;document.getElementById("sign-in-card").hidden=false});
+  document.getElementById("recovery-form").addEventListener("submit",event=>{event.preventDefault();const input=document.getElementById("recovery-account");document.getElementById("recovery-error").textContent=input.value.trim()?"":"Enter your registered account";if(input.value.trim()){showToast("Recovery request prepared for support verification");document.getElementById("back-login").click()}});
+
+  // ==== Native contact channels ====
+  document.querySelectorAll("[data-deeplink]").forEach(button=>button.addEventListener("click",()=>{ showToast(`Opening ${button.dataset.channel}...`); window.location.href=button.dataset.deeplink; }));
+  const savedAccount=localStorage.getItem("bingo-agent-account"); if(savedAccount){document.getElementById("login-account").value=savedAccount;const rm=document.getElementById("remember-me");if(rm)rm.checked=true}
+
+  // ==== Copy phone ====
+  document.querySelectorAll("[data-copy-btn]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const val = btn.dataset.copyBtn;
+      const originalLabel = btn.innerHTML;
+      try {
+        await navigator.clipboard.writeText(val);
+      } catch(e){
+        // Fallback: create temp textarea
+        const ta = document.createElement("textarea");
+        ta.value = val;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch(_){}
+        document.body.removeChild(ta);
+      }
+      btn.classList.add("copied");
+      btn.innerHTML = "✓ Copied";
+      showToast("Phone number copied · " + val);
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.innerHTML = originalLabel;
+      }, 2000);
+    });
+  });
+
+  selectTier("platinum");
+  renderRank("fd");
+</script>
+</body></html>
