@@ -361,11 +361,10 @@
     filter:blur(4px);
   }
   .podium-item{text-align:center;position:relative;display:flex;flex-direction:column;align-items:center}
-  .podium-item .avatar{
-    width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
-    background:linear-gradient(135deg,#b9c3d3,#7d8798);color:#252a32;
-    font-size:12px;font-weight:900;border:2px solid #d5dce6;
-    box-shadow:0 4px 10px rgba(0,0,0,.4);
+  .podium-item .p-trophy{
+    width:48px;height:48px;display:grid;place-items:center;
+    font-size:32px;line-height:1;
+    filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));
   }
   .podium-item .p-name{font-size:10px;margin-top:8px;font-weight:600;color:#e0e4ec}
   .podium-item .p-val{color:var(--gold);font-size:9px;margin-top:3px;font-weight:700}
@@ -381,11 +380,12 @@
   .podium-item.place-1{order:2}
   .podium-item.place-2{order:1}
   .podium-item.place-3{order:3}
-  .podium-item.place-1 .avatar{width:60px;height:60px;background:linear-gradient(135deg,#ffe287,#c99416);border-color:#ffe18a;box-shadow:0 6px 16px rgba(241,196,90,.4)}
+  .podium-item.place-1 .p-trophy{width:60px;height:60px;font-size:42px;filter:drop-shadow(0 6px 14px rgba(241,196,90,.45))}
   .podium-item.place-1 .bar{height:70px;background:linear-gradient(180deg,var(--gold) 0%,#a67c14 100%);color:#3a2c07}
-  .podium-item.place-1 .p-crown{position:absolute;top:-16px;font-size:16px}
+  .podium-item.place-1 .p-name{color:var(--gold)}
+  .podium-item.place-2 .p-trophy{filter:grayscale(.25) brightness(1.15) drop-shadow(0 4px 10px rgba(180,190,210,.35))}
   .podium-item.place-2 .bar{height:48px;background:linear-gradient(180deg,#c7ceda,#7c8497)}
-  .podium-item.place-3 .avatar{background:linear-gradient(135deg,#e6a06b,#a05e2c);border-color:#e3a47d;color:#fff}
+  .podium-item.place-3 .p-trophy{font-size:30px;filter:sepia(.85) saturate(1.4) hue-rotate(-15deg) drop-shadow(0 4px 10px rgba(201,125,82,.4))}
   .podium-item.place-3 .bar{height:32px;background:linear-gradient(180deg,#c97d52,#8a4e28);color:#fff}
 
   .your-rank{
@@ -404,7 +404,7 @@
 
   .rank-list > div{
     min-height:52px;border-bottom:1px solid var(--line);
-    display:grid;grid-template-columns:20px 32px 1fr auto;align-items:center;gap:9px;font-size:10px;padding:6px 0;
+    display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:12px;font-size:10px;padding:6px 0;
   }
   .rank-list > div:last-child{border-bottom:0}
   .rank-list > div > b{color:#747c87;text-align:center;font-weight:700;font-size:11px}
@@ -786,17 +786,27 @@
 
   /* Activity sheet */
   .activity-visual{
-    height:140px;border-radius:8px;padding:16px;
+    min-height:140px;height:auto;border-radius:8px;padding:16px;
     display:flex;flex-direction:column;justify-content:center;
     margin-bottom:14px;position:relative;overflow:hidden;
   }
   .activity-visual.blue{background:linear-gradient(135deg,#1c2948 0%,#131a34 100%);border:1px solid #344569}
   .activity-visual.orange{background:linear-gradient(135deg,#3a211b 0%,#2b1610 100%);border:1px solid #5c3428}
   .activity-visual.green{background:linear-gradient(135deg,#172c26 0%,#0e1e19 100%);border:1px solid #2b4d43}
-  .activity-visual .av-tag{color:var(--gold);font-size:8.5px;font-weight:900;letter-spacing:.5px}
+  .activity-visual .av-tag{color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.5px}
   .activity-visual .av-val{font-size:36px;font-weight:900;margin-top:8px;letter-spacing:-.5px;line-height:1}
-  .activity-visual .av-lbl{color:#929ba8;font-size:8.5px;margin-top:3px}
+  .activity-visual .av-lbl{color:#929ba8;font-size:10px;margin-top:3px}
   .activity-visual .av-decor{position:absolute;right:-20px;bottom:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);pointer-events:none}
+  .activity-visual .av-metrics{display:grid;gap:16px;margin-top:8px;position:relative;z-index:1}
+  .activity-visual .av-metrics.dual{grid-template-columns:1fr 1fr;gap:20px}
+  .activity-visual .av-metric{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .activity-visual .av-metric .av-val{margin-top:0}
+  .activity-visual .av-metric .av-lbl{margin-top:0}
+  .activity-visual .av-metrics.dual .av-lbl{font-size:9px;line-height:1.3}
+  .activity-visual .av-metrics.dual .av-val{font-size:30px}
+  .podium-item .p-crown{display:none}
+  .podium-item.place-1 .p-name{color:var(--gold)}
+
   .mission-list{display:grid;gap:8px;margin:15px 0 18px}
   .mission-list > div{min-height:60px;padding:11px;display:flex;align-items:center;gap:14px;background:#191f28;border:1px solid var(--line-2);border-radius:6px}
   .mission-list > div > span{color:var(--orange);font-size:11px;font-weight:900;flex-shrink:0}
@@ -840,8 +850,8 @@
   .earning-example .example-title{margin-bottom:8px}.earning-example dl div{padding:4px 0}.earning-example .total{padding-top:8px}.earning-example .example-note{margin-top:5px}
   /* Desktop leaderboard sizing */
   .ranking-section .section-heading{margin-bottom:12px}.rank-tabs{margin-bottom:12px}.rank-tabs button{padding:12px 8px;font-size:13px}
-  .podium{height:210px;padding:16px 12px 0}.podium-item .avatar{width:52px;height:52px;font-size:14px}.podium-item.place-1 .avatar{width:68px;height:68px}.podium-item .p-name{margin-top:8px;font-size:13px}.podium-item .p-val{margin-top:4px;font-size:12px}.podium-item .p-delta{font-size:11px}.podium-item .bar{margin-top:8px;font-size:18px}.podium-item.place-1 .bar{height:72px}.podium-item.place-2 .bar{height:52px}.podium-item.place-3 .bar{height:36px}.podium-item.place-1 .p-crown{top:-18px;font-size:18px}
-  .rank-list-head{height:32px;font-size:10px}.rank-list{height:360px}.rank-list>div{height:48px;min-height:48px;padding:6px 0;grid-template-columns:24px 36px 1fr auto;gap:10px;font-size:13px}.mini-avatar{width:34px;height:34px;font-size:10px}.rank-list>div>b{font-size:13px}.rank-list em{padding:3px 6px;font-size:9px}.rank-list .r-vl{font-size:13px}.rank-list .r-mv{font-size:11px}
+  .podium{height:210px;padding:16px 12px 0}.podium-item .p-trophy{width:52px;height:52px;font-size:36px}.podium-item.place-1 .p-trophy{width:68px;height:68px;font-size:48px}.podium-item .p-name{margin-top:8px;font-size:13px}.podium-item .p-val{margin-top:4px;font-size:12px}.podium-item .p-delta{font-size:11px}.podium-item .bar{margin-top:8px;font-size:18px}.podium-item.place-1 .bar{height:72px}.podium-item.place-2 .bar{height:52px}.podium-item.place-3 .bar{height:36px}
+  .rank-list-head{height:32px;font-size:10px}.rank-list{height:360px}.rank-list>div{height:48px;min-height:48px;padding:6px 0;grid-template-columns:28px 1fr auto;gap:12px;font-size:13px}.rank-list>div>b{font-size:13px}.rank-list em{padding:3px 6px;font-size:9px}.rank-list .r-vl{font-size:13px}.rank-list .r-mv{font-size:11px}
   .earning-example{padding:20px 22px}.example-title strong{font-size:15px}.earning-example dl div{font-size:13px}.earning-example .total dd{font-size:22px}
   .sheet-heading h2{font-size:24px}.sheet-intro{font-size:13px}.channel-btn{font-size:14px}.apply-head strong{font-size:18px}.primary-action{font-size:14px;height:52px}
   label{font-size:12px}input,textarea{font-size:14px;height:48px}
@@ -903,17 +913,14 @@
     <article class="metric-card">
       <div class="m-lbl">ACTIVE AGENTS</div>
       <div class="m-val num">12,480</div>
-      <div class="m-delta up">▲ 8.4% <span style="color:var(--muted);font-weight:400">vs last mo</span></div>
     </article>
     <article class="metric-card hi">
       <div class="m-lbl">MONTHLY GGR</div>
       <div class="m-val num">₱68.2M</div>
-      <div class="m-delta up">▲ 12.6% <span style="color:var(--muted);font-weight:400">vs last mo</span></div>
     </article>
     <article class="metric-card">
       <div class="m-lbl">MONTHLY DEPOSITS</div>
       <div class="m-val num">₱15.8M</div>
-      <div class="m-delta up">▲ 6.8% <span style="color:var(--muted);font-weight:400">vs last mo</span></div>
     </article>
   </section>
 
@@ -931,214 +938,181 @@
       <button data-rank="commission">Commission</button>
     </div>
     <div class="podium" id="podium"><div class="podium-item place-2">
-        
-        <div class="avatar">JM</div>
+        <div class="p-trophy" aria-hidden="true">🏆</div>
         <div class="p-name">J. Mendoza</div>
         <div class="p-val num">₱183K</div>
-        <div class="p-delta neutral">▬</div>
         <div class="bar">2</div>
       </div><div class="podium-item place-1">
-        <div class="p-crown">👑</div>
-        <div class="avatar">RC</div>
+        <div class="p-trophy" aria-hidden="true">🏆</div>
         <div class="p-name">R. Cruz</div>
         <div class="p-val num">₱241K</div>
-        <div class="p-delta up">▲2</div>
         <div class="bar">1</div>
       </div><div class="podium-item place-3">
-        
-        <div class="avatar">AS</div>
+        <div class="p-trophy" aria-hidden="true">🏆</div>
         <div class="p-name">A. Santos</div>
         <div class="p-val num">₱149K</div>
-        <div class="p-delta dn">▼1</div>
         <div class="bar">3</div>
       </div></div>
 
     <div class="rank-list-head"><span>RANK 4-20</span></div>
     <div class="rank-list" id="rank-list" tabindex="0" aria-label="Agent rankings 4 through 20"><div>
         <b class="num">4</b>
-        <span class="mini-avatar">LR</span>
         <span class="r-nm">L. Reyes</span>
         <em class="badge-plat">PLATINUM</em>
         <span class="r-vl num">₱118K</span>
         <span class="r-mv up">▲3</span>
       </div><div>
         <b class="num">5</b>
-        <span class="mini-avatar">MG</span>
         <span class="r-nm">M. Garcia</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱96K</span>
         <span class="r-mv neutral">▬</span>
       </div><div>
         <b class="num">6</b>
-        <span class="mini-avatar">DV</span>
         <span class="r-nm">D. Villanueva</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱91K</span>
         <span class="r-mv up">▲1</span>
       </div><div>
         <b class="num">7</b>
-        <span class="mini-avatar">ML</span>
         <span class="r-nm">M. Lim</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱87K</span>
         <span class="r-mv dn">▼2</span>
       </div><div>
         <b class="num">8</b>
-        <span class="mini-avatar">JF</span>
         <span class="r-nm">J. Flores</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱83K</span>
         <span class="r-mv up">▲4</span>
       </div><div>
         <b class="num">9</b>
-        <span class="mini-avatar">CR</span>
         <span class="r-nm">C. Ramos</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱79K</span>
         <span class="r-mv neutral">▬</span>
       </div><div>
         <b class="num">10</b>
-        <span class="mini-avatar">AB</span>
         <span class="r-nm">A. Bautista</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱75K</span>
         <span class="r-mv up">▲2</span>
       </div><div>
         <b class="num">11</b>
-        <span class="mini-avatar">NG</span>
         <span class="r-nm">N. Gonzales</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱71K</span>
         <span class="r-mv dn">▼1</span>
       </div><div>
         <b class="num">12</b>
-        <span class="mini-avatar">RT</span>
         <span class="r-nm">R. Torres</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱68K</span>
         <span class="r-mv up">▲1</span>
       </div><div>
         <b class="num">13</b>
-        <span class="mini-avatar">PM</span>
         <span class="r-nm">P. Mercado</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱65K</span>
         <span class="r-mv neutral">▬</span>
       </div><div>
         <b class="num">14</b>
-        <span class="mini-avatar">CS</span>
         <span class="r-nm">C. Santiago</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱62K</span>
         <span class="r-mv dn">▼3</span>
       </div><div>
         <b class="num">15</b>
-        <span class="mini-avatar">EL</span>
         <span class="r-nm">E. Lopez</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱59K</span>
         <span class="r-mv up">▲2</span>
       </div><div>
         <b class="num">16</b>
-        <span class="mini-avatar">BN</span>
         <span class="r-nm">B. Navarro</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱56K</span>
         <span class="r-mv neutral">▬</span>
       </div><div>
         <b class="num">17</b>
-        <span class="mini-avatar">KT</span>
         <span class="r-nm">K. Tan</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱53K</span>
         <span class="r-mv up">▲5</span>
       </div><div>
         <b class="num">18</b>
-        <span class="mini-avatar">AR</span>
         <span class="r-nm">A. Rivera</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱50K</span>
         <span class="r-mv dn">▼2</span>
       </div><div>
         <b class="num">19</b>
-        <span class="mini-avatar">JP</span>
         <span class="r-nm">J. Pascual</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱47K</span>
         <span class="r-mv up">▲1</span>
       </div><div>
         <b class="num">20</b>
-        <span class="mini-avatar">LM</span>
         <span class="r-nm">L. Morales</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱44K</span>
         <span class="r-mv neutral">▬</span>
       </div><div>
         <b class="num">21</b>
-        <span class="mini-avatar">FT</span>
         <span class="r-nm">F. Tolentino</span>
         <em class="badge-adv">ADVANCE</em>
         <span class="r-vl num">₱41K</span>
         <span class="r-mv dn">▼1</span>
       </div><div>
         <b class="num">22</b>
-        <span class="mini-avatar">GC</span>
         <span class="r-nm">G. Castillo</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱38K</span>
         <span class="r-mv up">▲3</span>
       </div><div>
         <b class="num">23</b>
-        <span class="mini-avatar">SD</span>
         <span class="r-nm">S. Domingo</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱35K</span>
         <span class="r-mv neutral">▬</span>
       </div><div>
         <b class="num">24</b>
-        <span class="mini-avatar">MR</span>
         <span class="r-nm">M. Reyes</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱32K</span>
         <span class="r-mv up">▲2</span>
       </div><div>
         <b class="num">25</b>
-        <span class="mini-avatar">AP</span>
         <span class="r-nm">A. Perez</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱29K</span>
         <span class="r-mv dn">▼2</span>
       </div><div>
         <b class="num">26</b>
-        <span class="mini-avatar">IC</span>
         <span class="r-nm">I. Cruz</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱26K</span>
         <span class="r-mv neutral">▬</span>
       </div><div>
         <b class="num">27</b>
-        <span class="mini-avatar">RV</span>
         <span class="r-nm">R. Valdez</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱23K</span>
         <span class="r-mv up">▲1</span>
       </div><div>
         <b class="num">28</b>
-        <span class="mini-avatar">HM</span>
         <span class="r-nm">H. Mendoza</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱20K</span>
         <span class="r-mv dn">▼1</span>
       </div><div>
         <b class="num">29</b>
-        <span class="mini-avatar">CT</span>
         <span class="r-nm">C. Trinidad</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱17K</span>
         <span class="r-mv up">▲2</span>
       </div><div>
         <b class="num">30</b>
-        <span class="mini-avatar">EP</span>
         <span class="r-nm">E. Pena</span>
         <em class="badge-gen">GENERAL</em>
         <span class="r-vl num">₱14K</span>
@@ -1155,31 +1129,31 @@
       </div>
     </div>
     <div class="campaign-carousel">
-      <button class="campaign-card blue" data-activity="platinum">
+      <button class="campaign-card green" data-activity="newUser">
         <div class="cc-top">
-          <span class="cc-tag">LIMITED</span>
-          <span class="cc-timer num">6d 14h left</span>
-        </div>
-        <div class="cc-body">
-          <h3>Fast-track to Platinum</h3>
-        </div>
-      </button>
-      <button class="campaign-card orange" data-activity="deposit">
-        <div class="cc-top">
-          <span class="cc-tag">DEPOSITS</span>
-          <span class="cc-timer num">14d 08h left</span>
-        </div>
-        <div class="cc-body">
-          <h3>Deposit Sprint</h3>
-        </div>
-      </button>
-      <button class="campaign-card green" data-activity="launch">
-        <div class="cc-top">
-          <span class="cc-tag">NEW AGENT</span>
+          <span class="cc-tag">NEW USER</span>
           <span class="cc-timer num">30 days</span>
         </div>
         <div class="cc-body">
-          <h3>30-Day Launch Bonus</h3>
+          <h3>New User Incentive</h3>
+        </div>
+      </button>
+      <button class="campaign-card blue" data-activity="multiplier">
+        <div class="cc-top">
+          <span class="cc-tag">MULTIPLIER</span>
+          <span class="cc-timer num">6d 14h left</span>
+        </div>
+        <div class="cc-body">
+          <h3>Limited-Time Multiplier</h3>
+        </div>
+      </button>
+      <button class="campaign-card orange" data-activity="quarterly">
+        <div class="cc-top">
+          <span class="cc-tag">QUARTERLY</span>
+          <span class="cc-timer num">14d 08h left</span>
+        </div>
+        <div class="cc-body">
+          <h3>Quarterly Challenge</h3>
         </div>
       </button>
     </div>
@@ -1393,15 +1367,18 @@
       </div>
       <div class="activity-visual blue" id="activity-visual">
         <div class="av-decor"></div>
-        <span class="av-tag" id="activity-tag">LIMITED</span>
-        <strong class="av-val num" id="activity-progress">68%</strong>
-        <small class="av-lbl">Mission progress</small>
+        <span class="av-tag" id="activity-tag">Up to</span>
+        <div class="av-metrics" id="activity-metrics">
+          <div class="av-metric">
+            <strong class="av-val num">₱5,000</strong>
+            <small class="av-lbl">Reward Cap</small>
+          </div>
+        </div>
       </div>
-      <p class="sheet-intro" id="activity-copy"></p>
       <div class="mission-list">
         <div><span>01</span><p><strong>Build qualified activity</strong><small>Invite and support eligible active players in your region.</small></p></div>
         <div><span>02</span><p><strong>Reach the target</strong><small>Progress updates within 24 hours after each verified deposit.</small></p></div>
-        <div><span>03</span><p><strong>Claim your reward</strong><small>Sign in to view your exact eligibility and reward amount.</small></p></div>
+        <div><span>03</span><p><strong>Reward Confirmation</strong><small>Your reward will be automatically confirmed and credited once you meet the eligibility requirements.</small></p></div>
       </div>
       <button class="primary-action" id="activity-login">LOGIN TO PARTICIPATE</button>
     </section>
@@ -1437,10 +1414,74 @@
     return "neutral";
   };
   const activityData = {
-    platinum:{title:"Fast-track to Platinum",tag:"LIMITED",progress:"68%",tone:"blue",copy:"Invite 5 qualified players and unlock an elevated commission tier for 30 days. Every qualified deposit ≥ ₱200 counts."},
-    deposit:{title:"Deposit Sprint",tag:"DEPOSITS",progress:"44%",tone:"orange",copy:"Grow your active player base and earn milestone rewards at 50 / 100 / 200 deposits this month."},
-    launch:{title:"30-Day Launch Bonus",tag:"NEW AGENT",progress:"26%",tone:"green",copy:"For new agents in their first 30 days: complete the launch mission for double commission across the introductory window."}
+    newUser:{
+      type:"newUser",
+      title:"New User Incentive",
+      tone:"green",
+      rewardCapPerAgent:5000
+    },
+    multiplier:{
+      type:"multiplier",
+      title:"Limited-Time Multiplier",
+      tone:"blue",
+      boostType:"GAME",
+      rewardBasis:"GGR",
+      multiplierFactor:2,
+      gameName:"Bingo Speed"
+    },
+    quarterly:{
+      type:"quarterly",
+      title:"Quarterly Challenge",
+      tone:"orange",
+      rewardSettings:[
+        {type:"cash", max:10000},
+        {type:"commission", max:5}
+      ]
+    }
   };
+  const formatPHP = n => "₱" + Number(n).toLocaleString("en-PH");
+  function renderActivityVisual(d){
+    const visual = document.getElementById("activity-visual");
+    const tag = document.getElementById("activity-tag");
+    const metrics = document.getElementById("activity-metrics");
+    visual.className = "activity-visual " + d.tone;
+    let tagText = "Up to";
+    let metricHtml = "";
+    if(d.type === "newUser"){
+      tagText = "Up to";
+      metricHtml = `<div class="av-metric"><strong class="av-val num">${formatPHP(d.rewardCapPerAgent)}</strong><small class="av-lbl">Reward Cap</small></div>`;
+      metrics.className = "av-metrics";
+    } else if(d.type === "multiplier"){
+      tagText = "Multiplier";
+      const factor = d.multiplierFactor;
+      const big = (factor === null || factor === undefined || factor === "")
+        ? String(d.rewardBasis || "")
+        : `${d.rewardBasis} ${factor}x`;
+      const lbl = d.boostType === "First Deposit"
+        ? "First Deposit Multiplier"
+        : `Multiplier Game: ${d.gameName || ""}`;
+      metricHtml = `<div class="av-metric"><strong class="av-val num">${big}</strong><small class="av-lbl">${lbl}</small></div>`;
+      metrics.className = "av-metrics";
+    } else if(d.type === "quarterly"){
+      tagText = "Up to";
+      const settings = Array.isArray(d.rewardSettings) ? d.rewardSettings : [];
+      const cash = settings.find(s => s.type === "cash");
+      const commission = settings.find(s => s.type === "commission");
+      const parts = [];
+      if(cash) parts.push(`<div class="av-metric"><strong class="av-val num">${formatPHP(cash.max)}</strong><small class="av-lbl">Cash Reward</small></div>`);
+      if(commission) parts.push(`<div class="av-metric"><strong class="av-val num">${commission.max}%</strong><small class="av-lbl">Next Quarter Commission Bonus</small></div>`);
+      metricHtml = parts.join("");
+      metrics.className = parts.length > 1 ? "av-metrics dual" : "av-metrics";
+    }
+    tag.textContent = tagText;
+    metrics.innerHTML = metricHtml;
+  }
+  function renderActivity(d){
+    if(!d) return;
+    document.getElementById("activity-title").textContent = d.title;
+    renderActivityVisual(d);
+    openPanel("activity");
+  }
 
   const panels = [...document.querySelectorAll(".overlay")];
   const toast = document.getElementById("toast");
@@ -1477,21 +1518,18 @@
     const order = [1,0,2], places = [2,1,3];
     document.getElementById("podium").innerHTML = order.map((idx,i) => {
       const r = rows[idx], place = places[i];
-      const [initials, name, val] = r;
-      const crown = place===1 ? '<div class="p-crown">👑</div>' : '';
+      const [, name, val] = r;
       return `<div class="podium-item place-${place}">
-        ${crown}
-        <div class="avatar">${initials}</div>
+        <div class="p-trophy" aria-hidden="true">🏆</div>
         <div class="p-name">${maskName(name)}</div>
         <div class="p-val num">${val}</div>
         <div class="bar">${place}</div>
       </div>`;
     }).join("");
     list.innerHTML = rows.slice(3,20).map((r,i) => {
-      const [initials, name, val] = r;
+      const [, name, val] = r;
       return `<div>
         <b class="num">${i+4}</b>
-        <span class="mini-avatar">${initials}</span>
         <span class="r-nm">${maskName(name)}</span>
         <span class="r-vl num">${val}</span>
       </div>`;
@@ -1517,13 +1555,7 @@
     renderRank(b.dataset.rank);
   }));
   document.querySelectorAll("[data-activity]").forEach(b => b.addEventListener("click", () => {
-    const d = activityData[b.dataset.activity];
-    document.getElementById("activity-title").textContent = d.title;
-    document.getElementById("activity-tag").textContent = d.tag;
-    document.getElementById("activity-progress").textContent = d.progress;
-    document.getElementById("activity-copy").textContent = d.copy;
-    document.getElementById("activity-visual").className = "activity-visual "+d.tone;
-    openPanel("activity");
+    renderActivity(activityData[b.dataset.activity]);
   }));
   document.getElementById("activity-login").addEventListener("click", () => openPanel("login"));
   const contactPlaceholders = {
@@ -1571,7 +1603,6 @@
 
   // ==== Tier click → recalculate commission example ====
   let currentGgr = 200000;
-  const formatPHP = n => "₱" + n.toLocaleString("en-PH");
   const tierRates = {general:20, advance:25, platinum:30, prestige:35};
   const tierOrder = ["general","advance","platinum","prestige"];
   const tierLabel = {general:"General", advance:"Advanced", platinum:"Platinum", prestige:"Prestige"};
