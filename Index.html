@@ -1438,7 +1438,7 @@
       <div class="example-title">
         <span class="coin">₱</span>
         <div>
-          <strong>Commission estimate · <span id="example-tier-name">Not qualified</span> · <span id="example-rate" class="num">0%</span></strong>
+          <strong>Commission estimate</strong>
           <small>Enter your monthly performance — the sharing ratio is matched automatically. Tap any tier below to see its benefits.</small>
         </div>
       </div>
@@ -1875,8 +1875,6 @@
       el.classList.toggle("previewing", !!preview && key === preview.key && (!tier || key !== tier.key));
     });
     document.getElementById("perf-total").textContent = deposits.toLocaleString("en-PH");
-    document.getElementById("example-tier-name").textContent = tier ? tier.label : "Not qualified";
-    document.getElementById("example-rate").textContent = `${rate}%`;
     document.getElementById("example-earnings").textContent = formatPHP(Math.round(perf.ggr * rate / 100));
     const detail = tierDetails[shown.key];
     const achieved = !!tier && shown.rate <= tier.rate;
