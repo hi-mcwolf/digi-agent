@@ -260,7 +260,7 @@
   /* ==== Commission tiers ==== */
   .commission-section{padding-top:6px}
   .ranking-section{padding-top:20px;border-top:1px solid var(--line)}
-  .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
   .tier{
     height:140px;padding:16px;border:1px solid var(--line-2);
     background:var(--panel);border-left:3px solid #a9b0bc;border-radius:8px;
@@ -275,6 +275,7 @@
     border-color:var(--orange);
     box-shadow:0 0 0 1px var(--orange),0 8px 22px rgba(255,96,56,.16);
   }
+  .tier.previewing{border-color:var(--line-3);box-shadow:inset 0 0 0 1px var(--line-3)}
   .tier.selected .t-name{color:var(--orange-2)}
   .tier .t-check{
     position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;
@@ -842,7 +843,7 @@
   .login-card{border-radius:8px}.login-card h2{font-size:24px}.login-card .login-submit,.primary-action{transition:transform .14s,opacity .14s,box-shadow .14s}.login-card .login-submit:active,.primary-action:active{transform:translateY(1px);box-shadow:none}.pw-toggle{min-width:42px;font-size:9px!important;font-weight:800}
   .login-card .input-label{display:block;margin:0 0 6px;color:#4b5563;font-size:11px;font-weight:700}.login-feedback{min-height:14px;margin-top:8px;text-align:center;color:#6b7280;font-size:9px}
   .login-card input.invalid{border-color:#e5464f;background:#fff7f7}.login-card input.invalid:focus{box-shadow:0 0 0 3px rgba(229,70,79,.1)}
-  .tier{height:140px;overflow:hidden}.tier::after{content:"";position:absolute;right:-18px;bottom:-28px;width:64px;height:64px;border:1px solid rgba(255,255,255,.05);rotate:45deg}.tier.selected::before{content:"SELECTED";position:absolute;right:7px;bottom:5px;color:rgba(255,155,77,.65);font-size:5px;font-weight:900;letter-spacing:1px}.tier.selected .t-badge{filter:drop-shadow(0 4px 6px rgba(255,96,56,.34))}.tier .t-hd{min-height:34px}.tier .t-badge{width:36px;height:42px;font-size:12px}.tier .t-rate{font-size:30px;margin:0}.tier .t-th{min-height:18px;font-size:11px}.earning-example{box-shadow:0 10px 26px rgba(0,0,0,.2);margin-top:14px}.upsell{display:flex;margin-top:12px;padding:14px 16px;font-size:13px}.upsell button{font-size:13px}
+  .tier{height:140px;overflow:hidden}.tier::after{content:"";position:absolute;right:-18px;bottom:-28px;width:64px;height:64px;border:1px solid rgba(255,255,255,.05);rotate:45deg}.tier.selected::before{content:"YOUR TIER";position:absolute;right:7px;bottom:5px;color:rgba(255,155,77,.65);font-size:5px;font-weight:900;letter-spacing:1px}.tier.previewing::before{content:"VIEWING";position:absolute;right:7px;bottom:5px;color:rgba(174,182,194,.6);font-size:5px;font-weight:900;letter-spacing:1px}.tier.selected .t-badge{filter:drop-shadow(0 4px 6px rgba(255,96,56,.34))}.tier .t-hd{min-height:34px}.tier .t-badge{width:36px;height:42px;font-size:12px}.tier .t-rate{font-size:30px;margin:0}.tier .t-th{min-height:18px;font-size:11px}.earning-example{box-shadow:0 10px 26px rgba(0,0,0,.2);margin-top:14px}.upsell{display:flex;margin-top:12px;padding:14px 16px;font-size:13px}.upsell button{font-size:13px}
   .qualification-panel.compact{padding:0 12px 12px;margin-top:9px}.qualification-panel.compact::before{margin:0 -12px 10px}.qualification-panel.compact .qualification-head{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:9px}.qualification-panel.compact .qualification-head h3{margin-top:3px;font-size:9.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.qualification-panel.compact .qualification-head button{min-width:64px;height:30px;padding:0 8px;border:1px solid #384351;border-radius:5px;background:#111720;color:#aeb6c2;font-size:7.5px;font-weight:800}
   .selected-tier-badge{width:34px;height:40px;display:grid;place-items:center;clip-path:polygon(50% 0,92% 18%,84% 78%,50% 100%,16% 78%,8% 18%);background:linear-gradient(145deg,#d5dbe6,#8993a5);color:#10141a;font-size:11px;font-weight:900;filter:drop-shadow(0 5px 7px rgba(0,0,0,.28))}.qualification-panel[data-tier=advance] .selected-tier-badge{background:linear-gradient(145deg,#ffdd77,#c89519)}.qualification-panel[data-tier=platinum] .selected-tier-badge{background:linear-gradient(145deg,#e4f3ff,#76afd5)}.qualification-panel[data-tier=prestige] .selected-tier-badge{background:linear-gradient(145deg,#ff9a69,#cf4217);color:#fff}.qualification-copy{min-width:0}
   .qualification-expanded{margin-top:10px}.qualification-expanded[hidden]{display:none}.qualification-expanded .benefit-head{margin-top:0}.qualification-line{margin-bottom:8px;padding:8px 9px;border:1px solid #303947;border-radius:6px;background:#141a22;display:flex;justify-content:space-between;align-items:center;gap:10px}.qualification-line span{color:#66717e;font-size:6px;font-weight:900;letter-spacing:.5px}.qualification-line strong{color:#d8dde5;font-size:8px;text-align:right}
@@ -1204,55 +1205,55 @@
         <h2>Commission tiers</h2>
       </div>
     </div>
-    <div class="tier-grid" id="tier-grid">
-      <button class="tier silver" data-tier="general" data-rate="20" data-name="General" data-threshold="≥5 Monthly Active">
-        <span class="t-check">✓</span>
-        <div class="t-hd"><span class="t-name">GENERAL</span><span class="t-badge">G</span></div>
-        <div class="t-rate num">20%</div>
-        <div class="t-th"><b>≥5</b> Monthly Active</div>
-      </button>
-      <button class="tier gold" data-tier="advance" data-rate="25" data-name="Advanced" data-threshold="20 Monthly Active · ≥₱300K GGR">
-        <span class="t-check">✓</span>
-        <div class="t-hd"><span class="t-name">ADVANCED</span><span class="t-badge">A</span></div>
-        <div class="t-rate num">25%</div>
-        <div class="t-th"><b>20</b> Active · <b>≥₱300K</b> GGR</div>
-      </button>
-      <button class="tier ice selected" data-tier="platinum" data-rate="30" data-name="Platinum" data-threshold="50 Monthly Active · ≥₱1M GGR">
-        <span class="t-check">✓</span>
-        <div class="t-hd"><span class="t-name">PLATINUM</span><span class="t-badge">P</span></div>
-        <div class="t-rate num">30%</div>
-        <div class="t-th"><b>50</b> Active · <b>≥₱1M</b> GGR</div>
-      </button>
-      <button class="tier orange" data-tier="prestige" data-rate="35" data-name="Prestige" data-threshold="150 Monthly Active · ≥₱5M GGR">
-        <span class="t-check">✓</span>
-        <div class="t-hd"><span class="t-name">PRESTIGE</span><span class="t-badge">★</span></div>
-        <div class="t-rate num">35%</div>
-        <div class="t-th"><b>150</b> Active · <b>≥₱5M</b> GGR</div>
-      </button>
-    </div>
-
     <article class="earning-example">
       <div class="example-title">
         <span class="coin">₱</span>
         <div>
-          <strong>Commission estimate · <span id="example-tier-name">Platinum</span></strong>
+          <strong>Commission estimate · <span id="example-tier-name">Not qualified</span> · <span id="example-rate" class="num">0%</span></strong>
+          <small>Enter your monthly performance — the sharing ratio is matched automatically. Tap any tier below to see its benefits.</small>
         </div>
       </div>
       <dl>
-        <div class="ggr-control"><dt>Monthly net GGR</dt><dd><button type="button" data-ggr-step="-10000" aria-label="Reduce GGR">−</button><label><span>₱</span><input id="ggr-input" inputmode="numeric" value="200,000" aria-label="Monthly net GGR"></label><button type="button" data-ggr-step="10000" aria-label="Increase GGR">+</button></dd></div>
-        <div class="total"><dt>Estimated earnings</dt><dd class="num" id="example-earnings">₱60,000</dd></div>
+        <div class="ggr-control"><dt>First Deposit (FD)</dt><dd><button type="button" data-perf-step="fd:-1" aria-label="Reduce FD">−</button><label><input id="fd-input" inputmode="numeric" value="" placeholder="0" aria-label="First deposit players"></label><button type="button" data-perf-step="fd:1" aria-label="Increase FD">+</button></dd></div>
+        <div class="ggr-control"><dt>Repeat Deposit (RD)</dt><dd><button type="button" data-perf-step="rd:-1" aria-label="Reduce RD">−</button><label><input id="rd-input" inputmode="numeric" value="" placeholder="0" aria-label="Repeat deposit players"></label><button type="button" data-perf-step="rd:1" aria-label="Increase RD">+</button></dd></div>
+        <div class="ggr-control"><dt>Monthly net GGR</dt><dd><button type="button" data-perf-step="ggr:-10000" aria-label="Reduce GGR">−</button><label><span>₱</span><input id="ggr-input" inputmode="numeric" value="" placeholder="0" aria-label="Monthly net GGR"></label><button type="button" data-perf-step="ggr:10000" aria-label="Increase GGR">+</button></dd></div>
+        <div><dt>FD + RD</dt><dd class="num" id="perf-total">0</dd></div>
+        <div class="total"><dt>Estimated earnings</dt><dd class="num" id="example-earnings">₱0</dd></div>
       </dl>
+      <p class="example-note" id="tier-gap-note">Enter FD, RD and GGR to match your sharing ratio.</p>
     </article>
 
-    <article class="qualification-panel compact" id="qualification-panel" aria-live="polite" data-tier="platinum">
-      <div class="qualification-head"><span class="selected-tier-badge" id="selected-tier-badge" aria-hidden="true">P</span><div class="qualification-copy"><span id="qualification-kicker">PLATINUM BENEFITS</span></div><button id="toggle-qualification" type="button" aria-expanded="false">View all</button></div>
-      <div class="qualification-expanded" id="qualification-expanded" hidden=""><div class="qualification-line"><span>SUITABLE FOR</span><strong id="qualification-suitable">Diversified channels with strong expansion intent</strong></div><div class="benefit-card"><div class="benefit-head"><span>LEVEL BENEFITS</span></div><ul class="benefit-list" id="qualification-benefits"><li>TV equipment for live content and Wi-Fi support</li><li>Upgraded gifts, rewards and Platinum certification medal</li><li>Eligibility for selected offline activities</li></ul></div></div>
-    </article>
+    <div class="tier-grid" id="tier-grid">
+      <button type="button" class="tier silver" data-tier="general">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">GENERAL</span><span class="t-badge">G</span></div>
+        <div class="t-rate num">20%</div>
+        <div class="t-th"><b>FD + RD ≥ 5</b></div>
+      </button>
+      <button type="button" class="tier gold" data-tier="advance">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">ADVANCED</span><span class="t-badge">A</span></div>
+        <div class="t-rate num">25%</div>
+        <div class="t-th"><b>FD + RD ≥ 15</b> · <b>GGR ≥ ₱50K</b></div>
+      </button>
+      <button type="button" class="tier ice" data-tier="platinum">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">PLATINUM</span><span class="t-badge">P</span></div>
+        <div class="t-rate num">30%</div>
+        <div class="t-th"><b>FD + RD ≥ 50</b> · <b>GGR ≥ ₱1M</b></div>
+      </button>
+      <button type="button" class="tier orange" data-tier="prestige">
+        <span class="t-check">✓</span>
+        <div class="t-hd"><span class="t-name">PRESTIGE</span><span class="t-badge">★</span></div>
+        <div class="t-rate num">35%</div>
+        <div class="t-th"><b>FD + RD ≥ 150</b> · <b>GGR ≥ ₱5M</b></div>
+      </button>
+    </div>
 
-    <div class="upsell" id="upsell-line">
-        <div>Reach <b>Prestige</b> and earn up to <b class="num">₱70,000</b> at the same GGR.</div>
-        <button data-select-tier="prestige">Preview Prestige ›</button>
-      </div>
+    <article class="qualification-panel compact" id="qualification-panel" aria-live="polite" data-tier="general">
+      <div class="qualification-head"><span class="selected-tier-badge" id="selected-tier-badge" aria-hidden="true">G</span><div class="qualification-copy"><span id="qualification-kicker">GENERAL BENEFITS · LOCKED</span></div><button id="toggle-qualification" type="button" aria-expanded="false">View all</button></div>
+      <div class="qualification-expanded" id="qualification-expanded" hidden=""><div class="qualification-line"><span>SUITABLE FOR</span><strong id="qualification-suitable">Individual entrepreneurs and small shops</strong></div><div class="benefit-card"><div class="benefit-head"><span>LEVEL BENEFITS</span></div><ul class="benefit-list" id="qualification-benefits"><li>Promotional posters, display racks and in-store brand materials</li></ul></div></div>
+    </article>
   </section>
 
 
@@ -1604,12 +1605,16 @@
   panels.forEach(p => p.addEventListener("mousedown", e => { if(e.target === p) closePanels(); }));
   document.addEventListener("keydown", e => { if(e.key === "Escape") closePanels(); });
 
-  // ==== Tier click → recalculate commission example ====
-  let currentGgr = 200000;
-  const tierRates = {general:20, advance:25, platinum:30, prestige:35};
-  const tierOrder = ["general","advance","platinum","prestige"];
-  const tierLabel = {general:"General", advance:"Advanced", platinum:"Platinum", prestige:"Prestige"};
-  const tierMark = {general:"G", advance:"A", platinum:"P", prestige:"★"};
+  // ==== Performance inputs → auto-matched commission tier ====
+  const perf = { fd:0, rd:0, ggr:0 };
+  let previewKey = null;   // tier the user tapped to read about; does not affect the matched rate
+  // Ordered high to low so the first match wins.
+  const tiers = [
+    { key:"prestige", label:"Prestige", mark:"★", rate:35, minDeposits:150, minGgr:5000000 },
+    { key:"platinum", label:"Platinum", mark:"P", rate:30, minDeposits:50,  minGgr:1000000 },
+    { key:"advance",  label:"Advanced", mark:"A", rate:25, minDeposits:15,  minGgr:50000 },
+    { key:"general",  label:"General",  mark:"G", rate:20, minDeposits:5,   minGgr:0 }
+  ];
   const tierDetails = {
     general:{suitable:"Individual entrepreneurs and small shops",preview:"Basic in-store promotional materials",benefits:["Promotional posters, display racks and in-store brand materials"]},
     advance:{suitable:"Merchants with certain resources and venues",preview:"Wi-Fi, gifts & new-reward support",benefits:["Wi-Fi network provision","Small-gift and new-reward support"]},
@@ -1617,53 +1622,67 @@
     prestige:{suitable:"Partners aiming for large-scale development",preview:"Platinum rights + A/C, décor & dedicated support",benefits:["All Platinum benefits, plus air-conditioning installation","Store-decoration packages with multiple options","Honor Affiliate certification medal","Dedicated customer-service / support hotline","Exclusive offline marketing activities"]}
   };
 
-  function selectTier(key){
-    document.querySelectorAll(".tier").forEach(el => {
-      el.classList.toggle("selected", el.dataset.tier === key);
-    });
-    const rate = tierRates[key];
-    const earnings = Math.round(currentGgr * rate / 100);
-    document.getElementById("example-tier-name").textContent = tierLabel[key];
-    document.getElementById("example-earnings").textContent = formatPHP(earnings);
-    const detail=tierDetails[key];
-    document.getElementById("qualification-panel").dataset.tier=key;
-    document.getElementById("selected-tier-badge").textContent=tierMark[key];
-    document.getElementById("qualification-kicker").textContent=`${tierLabel[key].toUpperCase()} BENEFITS`;
-    document.getElementById("qualification-suitable").textContent=detail.suitable;
-    document.getElementById("qualification-benefits").innerHTML=detail.benefits.map(item=>`<li>${item}</li>`).join("");
+  const matchTier = deposits => tiers.find(t => deposits >= t.minDeposits && perf.ggr >= t.minGgr) || null;
 
-    // Upsell: show next tier up (if any); if already Prestige, show delta from General
-    const idx = tierOrder.indexOf(key);
-    const upsell = document.getElementById("upsell-line");
-    if(idx < tierOrder.length - 1){
-      const nextKey = tierOrder[idx + 1];
-      const nextRate = tierRates[nextKey];
-      const nextEarnings = Math.round(currentGgr * nextRate / 100);
-      upsell.innerHTML = `
-        <div>Reach <b>${tierLabel[nextKey]}</b> and earn up to <b class="num">${formatPHP(nextEarnings)}</b> at the same GGR.</div>
-        <button data-select-tier="${nextKey}">Preview ${tierLabel[nextKey]} ›</button>
-      `;
-    } else {
-      const genEarnings = Math.round(currentGgr * tierRates.general / 100);
-      const delta = earnings - genEarnings;
-      upsell.innerHTML = `
-        <div>At <b>Prestige</b>, you earn <b class="num">${formatPHP(delta)}</b> more per month than an entry-tier agent.</div>
-        <button data-open="contact">Ask about qualification ›</button>
-      `;
-    }
-    // Rebind toast on the newly-injected upsell button
-    upsell.querySelectorAll("[data-select-tier]").forEach(b => b.addEventListener("click", () => selectTier(b.dataset.selectTier)));
-    upsell.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openPanel(b.dataset.open)));
+  function renderCommission(){
+    const deposits = perf.fd + perf.rd;
+    const tier = matchTier(deposits);
+    const rate = tier ? tier.rate : 0;
+    const preview = tiers.find(t => t.key === previewKey) || null;
+    const shown = preview || tier || tiers[tiers.length - 1];   // nothing matched yet: General is the target
+    document.querySelectorAll(".tier[data-tier]").forEach(el => {
+      const key = el.dataset.tier;
+      el.classList.toggle("selected", !!tier && key === tier.key);
+      el.classList.toggle("previewing", !!preview && key === preview.key && (!tier || key !== tier.key));
+    });
+    document.getElementById("perf-total").textContent = deposits.toLocaleString("en-PH");
+    document.getElementById("example-tier-name").textContent = tier ? tier.label : "Not qualified";
+    document.getElementById("example-rate").textContent = `${rate}%`;
+    document.getElementById("example-earnings").textContent = formatPHP(Math.round(perf.ggr * rate / 100));
+    const detail = tierDetails[shown.key];
+    const achieved = !!tier && shown.rate <= tier.rate;
+    const suffix = (tier && shown.key === tier.key) ? "" : (achieved ? " · PREVIEW" : " · LOCKED");
+    document.getElementById("qualification-panel").dataset.tier = shown.key;
+    document.getElementById("selected-tier-badge").textContent = shown.mark;
+    document.getElementById("qualification-kicker").textContent = `${shown.label.toUpperCase()} BENEFITS${suffix}`;
+    document.getElementById("qualification-suitable").textContent = detail.suitable;
+    document.getElementById("qualification-benefits").innerHTML = detail.benefits.map(item => `<li>${item}</li>`).join("");
+    document.getElementById("tier-gap-note").textContent = gapNote(tier, deposits);
   }
-  document.querySelectorAll(".tier[data-tier]").forEach(t => {
-    t.addEventListener("click", () => selectTier(t.dataset.tier));
-  });
+
+  function gapNote(tier, deposits){
+    if(!deposits && !perf.ggr) return "Enter FD, RD and GGR to match your sharing ratio.";
+    const next = tiers[(tier ? tiers.indexOf(tier) : tiers.length) - 1];
+    if(!next) return "Prestige is the top tier — you are earning the maximum 35% share.";
+    const parts = [];
+    const needDeposits = Math.max(0, next.minDeposits - deposits);
+    const needGgr = Math.max(0, next.minGgr - perf.ggr);
+    if(needDeposits) parts.push(`${needDeposits} more FD + RD`);
+    if(needGgr) parts.push(`${formatPHP(needGgr)} more GGR`);
+    return `Need ${parts.join(" and ")} to ${tier ? "reach" : "unlock"} ${next.label} (${next.rate}%).`;
+  }
+
   document.getElementById("toggle-qualification").addEventListener("click",event=>{const expanded=document.getElementById("qualification-expanded"),open=expanded.hidden;expanded.hidden=!open;event.currentTarget.textContent=open?"Hide":"View all";event.currentTarget.setAttribute("aria-expanded",String(open))});
-  const ggrInput=document.getElementById("ggr-input");
-  function updateGgr(value){ currentGgr=Math.max(0,Math.min(999999999,Number(value)||0)); ggrInput.value=currentGgr.toLocaleString("en-PH"); const selected=document.querySelector(".tier.selected"); selectTier(selected?selected.dataset.tier:"platinum"); }
-  ggrInput.addEventListener("focus",()=>ggrInput.select());
-  ggrInput.addEventListener("input",()=>updateGgr(ggrInput.value.replace(/\D/g,"")));
-  document.querySelectorAll("[data-ggr-step]").forEach(button=>button.addEventListener("click",()=>updateGgr(currentGgr+Number(button.dataset.ggrStep))));
+  const perfInputs = { fd:document.getElementById("fd-input"), rd:document.getElementById("rd-input"), ggr:document.getElementById("ggr-input") };
+  const perfMax = { fd:99999, rd:99999, ggr:999999999 };
+  function setPerf(field, value, allowBlank){
+    const digits = String(value).replace(/\D/g,"");
+    perf[field] = Math.max(0, Math.min(perfMax[field], Number(digits)||0));
+    perfInputs[field].value = (allowBlank && digits === "") ? "" : perf[field].toLocaleString("en-PH");
+    renderCommission();
+  }
+  Object.entries(perfInputs).forEach(([field, input]) => {
+    input.addEventListener("focus", () => input.select());
+    input.addEventListener("input", () => setPerf(field, input.value, true));
+  });
+  document.querySelectorAll("[data-perf-step]").forEach(button => button.addEventListener("click", () => {
+    const [field, step] = button.dataset.perfStep.split(":");
+    setPerf(field, Math.max(0, perf[field] + Number(step)));
+  }));
+  document.querySelectorAll(".tier[data-tier]").forEach(card => card.addEventListener("click", () => {
+    previewKey = card.dataset.tier;
+    renderCommission();
+  }));
 
   // ==== Password toggle (login) ====
   const pwToggle = document.getElementById("pw-toggle");
@@ -1724,7 +1743,7 @@
     });
   });
 
-  selectTier("platinum");
+  renderCommission();
   renderRank("fd");
   // Rankings land T+1, so the range ends yesterday; on the 1st the whole previous month is shown instead.
   const pad2 = n => String(n).padStart(2,"0");
