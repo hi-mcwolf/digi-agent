@@ -1165,23 +1165,23 @@
       <span class="data-note" title="Rankings update daily (T+1). On the 1st of each month the previous month's totals are shown.">DATA RANGE <b class="num" id="rank-range">09-01~09-08-26</b></span>
     </div>
     <div class="rank-tabs" role="tablist">
-      <button class="selected" data-rank="fd" title="Total first-deposit amount from all players under your account this month. Updated daily (T+1).">First Deposit</button>
+      <button class="selected" data-rank="fd" title="Total first-deposit players under your account this month (headcount). Updated daily (T+1).">First Deposit</button>
       <button data-rank="active" title="Total active players under your account this month. Updated daily (T+1).">Active Players</button>
     </div>
     <div class="podium" id="podium"><div class="podium-item place-2">
         <div class="p-trophy" aria-hidden="true">🏆</div>
         <div class="p-name">J. Mendoza</div>
-        <div class="p-val num">₱183K</div>
+        <div class="p-val num">183</div>
         <div class="bar">2</div>
       </div><div class="podium-item place-1">
         <div class="p-trophy" aria-hidden="true">🏆</div>
         <div class="p-name">R. Cruz</div>
-        <div class="p-val num">₱241K</div>
+        <div class="p-val num">241</div>
         <div class="bar">1</div>
       </div><div class="podium-item place-3">
         <div class="p-trophy" aria-hidden="true">🏆</div>
         <div class="p-name">A. Santos</div>
-        <div class="p-val num">₱149K</div>
+        <div class="p-val num">149</div>
         <div class="bar">3</div>
       </div></div>
 
@@ -1449,7 +1449,7 @@
         <div><dt>FD + RD</dt><dd class="num" id="perf-total">0</dd></div>
         <div class="total"><dt>Estimated earnings</dt><dd class="num" id="example-earnings">₱0</dd></div>
       </dl>
-      <p class="example-note" id="tier-gap-note">Enter FD, RD and GGR to match your sharing ratio.</p>
+      <p class="example-note" id="tier-gap-note" hidden></p>
     </article>
 
     <div class="tier-grid" id="tier-grid">
@@ -1639,10 +1639,9 @@
   const activePlayerValues = [1284,1102,968,902,845,793,741,706,662,618,587,551,520,494,461,433,402,378,351,327,302,281,258,234,211,189,166,142,121,98];
   const movement = ["▲2","▬","▼1","▲3","▬","▲1","▼2","▲4","▬","▲2","▼1","▲1","▬","▼3","▲2","▬","▲5","▼2","▲1","▬","▼1","▲3","▬","▲2","▼2","▬","▲1","▼1","▲2","▬"];
   const tierFor = value => value >= 200 ? "prest" : value >= 100 ? "plat" : value >= 40 ? "adv" : "gen";
-  const pesoK = value => `₱${value}K`;
   const playerCount = value => value.toLocaleString("en-PH");
   const makeRanking = (values, format, offset=0) => values.map((value,index) => { const agent=agents[(index+offset)%agents.length]; return [agent[0],agent[1],format(value),tierFor(value),movement[index]]; });
-  const rankData = { fd: makeRanking(fdValues,pesoK), active: makeRanking(activePlayerValues,playerCount,6) };
+  const rankData = { fd: makeRanking(fdValues,playerCount), active: makeRanking(activePlayerValues,playerCount,6) };
   const badgeMap = {
     prest: ["PRESTIGE","badge-prest"],
     plat: ["PLATINUM","badge-plat"],
@@ -1884,19 +1883,6 @@
     document.getElementById("qualification-kicker").textContent = `${shown.label.toUpperCase()} BENEFITS${suffix}`;
     document.getElementById("qualification-suitable").textContent = detail.suitable;
     document.getElementById("qualification-benefits").innerHTML = detail.benefits.map(item => `<li>${item}</li>`).join("");
-    document.getElementById("tier-gap-note").textContent = gapNote(tier, deposits);
-  }
-
-  function gapNote(tier, deposits){
-    if(!deposits && !perf.ggr) return "Enter FD, RD and GGR to match your sharing ratio.";
-    const next = tiers[(tier ? tiers.indexOf(tier) : tiers.length) - 1];
-    if(!next) return "Prestige is the top tier — you are earning the maximum 35% share.";
-    const parts = [];
-    const needDeposits = Math.max(0, next.minDeposits - deposits);
-    const needGgr = Math.max(0, next.minGgr - perf.ggr);
-    if(needDeposits) parts.push(`${needDeposits} more FD + RD`);
-    if(needGgr) parts.push(`${formatPHP(needGgr)} more GGR`);
-    return `Need ${parts.join(" and ")} to ${tier ? "reach" : "unlock"} ${next.label} (${next.rate}%).`;
   }
 
   document.getElementById("toggle-qualification").addEventListener("click",event=>{const expanded=document.getElementById("qualification-expanded"),open=expanded.hidden;expanded.hidden=!open;event.currentTarget.textContent=open?"Hide":"View all";event.currentTarget.setAttribute("aria-expanded",String(open))});
